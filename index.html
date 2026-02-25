@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VCE Chemistry Unit 1 – Study & Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,900;1,300&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #141720;
+    --surface2: #1c2030;
+    --border: #2a2f42;
+    --accent: #7ee8a2;
+    --accent2: #5bc4f5;
+    --warn: #f5a623;
+    --danger: #f56c6c;
+    --text: #e8ecf4;
+    --muted: #7a8099;
+    --correct: #7ee8a2;
+    --incorrect: #f56c6c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* BG decoration */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(126,232,162,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -200px; left: -200px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(91,196,245,0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeDown 0.7s ease both;
+  }
+  .badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(126,232,162,0.3);
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #e8ecf4 30%, var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  header p {
+    color: var(--muted);
+    font-size: 1rem;
+  }
+
+  /* Nav tabs */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 40px;
+    background: var(--surface);
+    padding: 6px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  .tab {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tab.active {
+    background: var(--surface2);
+    color: var(--text);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .tab:hover:not(.active) { color: var(--text); }
+
+  /* Sections */
+  .section { display: none; animation: fadeUp 0.4s ease both; }
+  .section.active { display: block; }
+
+  /* LESSON NOTES */
+  .module {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .module-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 24px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .module-header:hover { background: var(--surface2); }
+  .module-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(126,232,162,0.1);
+    border: 1px solid rgba(126,232,162,0.2);
+    border-radius: 6px;
+    padding: 3px 8px;
+    flex-shrink: 0;
+  }
+  .module-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex: 1;
+  }
+  .chevron {
+    color: var(--muted);
+    transition: transform 0.3s;
+    font-size: 1.1rem;
+  }
+  .module.open .chevron { transform: rotate(180deg); }
+  .module-body {
+    display: none;
+    padding: 0 24px 24px;
+    border-top: 1px solid var(--border);
+  }
+  .module.open .module-body { display: block; }
+
+  .note-block {
+    margin-top: 18px;
+  }
+  .note-block h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 10px;
+    margin-top: 18px;
+  }
+  .note-block p {
+    color: #b0b8cc;
+    font-size: 0.93rem;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .key-point {
+    background: rgba(126,232,162,0.07);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .formula {
+    font-family: 'DM Mono', monospace;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    margin: 8px 0;
+    font-size: 0.9rem;
+    color: var(--accent2);
+    display: inline-block;
+  }
+  .table-wrap { overflow-x: auto; margin: 12px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th {
+    background: var(--surface2);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    border: 1px solid var(--border);
+  }
+  td {
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    color: #b0b8cc;
+    line-height: 1.5;
+  }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
+  /* QUIZ */
+  .quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+  .progress-wrap {
+    flex: 1;
+    margin-right: 20px;
+  }
+  .progress-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 4px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+  .score-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    background: rgba(126,232,162,0.1);
+    border: 1px solid rgba(126,232,162,0.2);
+    padding: 6px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .q-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .q-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--border);
+    transition: background 0.3s;
+  }
+  .q-card.answered-correct::before { background: var(--correct); }
+  .q-card.answered-incorrect::before { background: var(--incorrect); }
+
+  .q-type-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .q-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+  .q-marks {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--warn);
+    margin-left: 8px;
+  }
+
+  /* MCQ */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+  }
+  .option:hover:not(:disabled) {
+    border-color: var(--accent2);
+    background: rgba(91,196,245,0.05);
+  }
+  .option .opt-letter {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2px 7px;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .option.correct {
+    border-color: var(--correct);
+    background: rgba(126,232,162,0.08);
+    color: var(--correct);
+  }
+  .option.correct .opt-letter {
+    background: rgba(126,232,162,0.2);
+    border-color: var(--correct);
+    color: var(--correct);
+  }
+  .option.incorrect {
+    border-color: var(--incorrect);
+    background: rgba(245,108,108,0.08);
+    color: var(--incorrect);
+  }
+  .option.incorrect .opt-letter {
+    background: rgba(245,108,108,0.2);
+    border-color: var(--incorrect);
+    color: var(--incorrect);
+  }
+  .option:disabled { cursor: default; }
+
+  /* Fill in blank */
+  .fitb-wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 0.95rem; line-height: 2; }
+  .fitb-input {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    padding: 5px 12px;
+    outline: none;
+    transition: border-color 0.2s;
+    min-width: 120px;
+    text-align: center;
+  }
+  .fitb-input:focus { border-color: var(--accent2); }
+  .fitb-input.correct { border-color: var(--correct); background: rgba(126,232,162,0.08); color: var(--correct); }
+  .fitb-input.incorrect { border-color: var(--incorrect); background: rgba(245,108,108,0.08); color: var(--incorrect); }
+
+  /* Short answer */
+  .short-ans {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    padding: 12px 16px;
+    resize: vertical;
+    min-height: 90px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .short-ans:focus { border-color: var(--accent2); }
+
+  /* Buttons */
+  .btn {
+    padding: 11px 24px;
+    border-radius: 10px;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-check {
+    background: var(--accent);
+    color: #0d1209;
+    margin-top: 16px;
+  }
+  .btn-check:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-check:disabled { opacity: 0.4; cursor: default; transform: none; }
+  .btn-reveal {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    margin-top: 16px;
+    margin-left: 10px;
+    font-size: 0.82rem;
+  }
+  .btn-reveal:hover { color: var(--text); border-color: var(--muted); }
+
+  .feedback {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    display: none;
+  }
+  .feedback.correct {
+    background: rgba(126,232,162,0.08);
+    border: 1px solid rgba(126,232,162,0.2);
+    color: var(--correct);
+    display: block;
+  }
+  .feedback.incorrect {
+    background: rgba(245,108,108,0.08);
+    border: 1px solid rgba(245,108,108,0.2);
+    color: var(--incorrect);
+    display: block;
+  }
+  .feedback.reveal {
+    background: rgba(91,196,245,0.07);
+    border: 1px solid rgba(91,196,245,0.2);
+    color: var(--accent2);
+    display: block;
+  }
+
+  /* Results */
+  .results-card {
+    text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px 32px;
+    display: none;
+  }
+  .results-card.show { display: block; animation: fadeUp 0.5s ease both; }
+  .results-score {
+    font-family: 'Fraunces', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+  .results-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 10px 0 24px;
+  }
+  .results-msg {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: #b0b8cc;
+    margin-bottom: 28px;
+  }
+  .btn-retry {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .btn-retry:hover { border-color: var(--accent); color: var(--accent); }
+
+  .submit-wrap {
+    text-align: center;
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+  }
+  .btn-submit {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #0d1209;
+    font-size: 1rem;
+    padding: 14px 36px;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  .btn-submit:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(126,232,162,0.2); }
+
+  /* Animations */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .tab { font-size: 0.78rem; padding: 8px 10px; }
+    .q-card { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="badge">VCE Chemistry · Unit 1 · Year 11</div>
+    <h1>Elements, Periodic Table<br>&amp; Covalent Substances</h1>
+    <p>Lesson notes + scored quiz covering your SAC topics</p>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showSection('notes')">📖 Lesson Notes</button>
+    <button class="tab" onclick="showSection('quiz')">⚗️ Quiz</button>
+  </div>
+
+  <!-- ==================== NOTES ==================== -->
+  <div id="notes" class="section active">
+
+    <!-- Module 1 -->
+    <div class="module open">
+      <div class="module-header" onclick="toggleModule(this)">
+        <span class="module-num">01</span>
+        <span class="module-title">Elements, Atoms & the Periodic Table</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="module-body">
+        <div class="note-block">
+          <h4>What is an Element?</h4>
+          <div class="key-point">An <strong>element</strong> is a pure substance made up of only one type of atom, defined by its number of protons (atomic number, Z).</div>
+          <p>Each element has a unique atomic number. Elements are organised in the <strong>periodic table</strong> by increasing atomic number, arranged into periods (rows) and groups (columns).</p>
+        </div>
+
+        <div class="note-block">
+          <h4>Atomic Structure</h4>
+          <p>Every atom has a nucleus containing protons and neutrons, with electrons orbiting in shells.</p>
+          <div class="table-wrap">
+            <table>
+              <tr><th>Particle</th><th>Location</th><th>Charge</th><th>Relative Mass</th></tr>
+              <tr><td>Proton</td><td>Nucleus</td><td>+1</td><td>1</td></tr>
+              <tr><td>Neutron</td><td>Nucleus</td><td>0</td><td>1</td></tr>
+              <tr><td>Electron</td><td>Shells</td><td>−1</td><td>≈0</td></tr>
+            </table>
+          </div>
+          <p>Key formulae: <span class="formula">A = Z + N</span> (Mass number = Protons + Neutrons)</p>
+        </div>
+
+        <div class="note-block">
+          <h4>Isotopes vs Ions</h4>
+          <div class="key-point"><strong>Isotopes:</strong> same element (same protons), different number of neutrons → different mass number. E.g. ¹²C and ¹⁴C.</div>
+          <div class="key-point"><strong>Ions:</strong> atoms that have gained or lost electrons, giving them a charge. Cations (+) lose electrons; anions (−) gain electrons.</div>
+          <p>Example: ³⁵₁₇Cl⁻ has 17 protons, 18 neutrons, and <em>18</em> electrons (gained one).</p>
+        </div>
+
+        <div class="note-block">
+          <h4>Electronic Configuration</h4>
+          <p>Electrons fill subshells in order of increasing energy: 1s → 2s → 2p → 3s → 3p → ...</p>
+          <p>Subshell capacity: s = 2, p = 6, d = 10.</p>
+          <p>Example — Sulfur (Z = 16): <span class="formula">1s² 2s² 2p⁶ 3s² 3p⁴</span></p>
+          <p>The period number = highest principal quantum number; the group = valence electrons (for main group).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module 2 -->
+    <div class="module">
+      <div class="module-header" onclick="toggleModule(this)">
+        <span class="module-num">02</span>
+        <span class="module-title">Periodic Trends</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="module-body">
+        <div class="note-block">
+          <h4>Atomic Radius</h4>
+          <div class="key-point">Across a period (left → right): atomic radius <strong>decreases</strong> — nuclear charge increases, shielding stays constant, so electrons are pulled in closer.</div>
+          <div class="key-point">Down a group: atomic radius <strong>increases</strong> — new electron shells added, more shielding, nucleus less effective at holding outer electrons.</div>
+        </div>
+
+        <div class="note-block">
+          <h4>Ionisation Energy</h4>
+          <p><strong>First ionisation energy (IE₁)</strong>: energy to remove one mole of electrons from one mole of gaseous atoms.</p>
+          <div class="key-point">Across a period: IE₁ increases — greater nuclear charge, same shielding, harder to remove electrons.</div>
+          <div class="key-point">Down a group: IE₁ decreases — outer electrons further away and more shielded.</div>
+        </div>
+
+        <div class="note-block">
+          <h4>Electronegativity</h4>
+          <p>Measure of an atom's ability to attract electrons in a bond.</p>
+          <div class="key-point">Increases across a period; decreases down a group. Fluorine is the most electronegative element.</div>
+          <p>Down Group 17: atomic radius increases → nucleus further from bonding electrons → weaker attraction → lower electronegativity.</p>
+        </div>
+
+        <div class="note-block">
+          <h4>Ionic Radius</h4>
+          <div class="key-point">Anions (e.g. S²⁻) are <em>larger</em> than the parent atom — extra electrons increase electron–electron repulsion, expanding the electron cloud.</div>
+          <div class="key-point">Cations (e.g. Mg²⁺) are <em>smaller</em> than the parent atom — fewer electrons, same nuclear charge pulls them in tighter.</div>
+        </div>
+
+        <div class="note-block">
+          <h4>Metallic Character & Group 1</h4>
+          <p>Metallic character increases down a group. Group 1 metals are the most reactive metals.</p>
+          <div class="key-point">Reactivity increases down Group 1 because the outer electron is further from the nucleus and more shielded, making it easier to lose.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module 3 -->
+    <div class="module">
+      <div class="module-header" onclick="toggleModule(this)">
+        <span class="module-num">03</span>
+        <span class="module-title">Covalent Bonding & Molecular Structure</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="module-body">
+        <div class="note-block">
+          <h4>Covalent Bonds</h4>
+          <p>Formed when two non-metals <strong>share electrons</strong> to achieve a full outer shell (octet rule).</p>
+          <div class="table-wrap">
+            <table>
+              <tr><th>Bond Type</th><th>Pairs Shared</th><th>Example</th></tr>
+              <tr><td>Single</td><td>1</td><td>H₂O, CH₄</td></tr>
+              <tr><td>Double</td><td>2</td><td>O₂, CO₂</td></tr>
+              <tr><td>Triple</td><td>3</td><td>N₂, C₂H₂</td></tr>
+            </table>
+          </div>
+          <p>Nitrogen (5 valence electrons) needs 3 more → forms a triple bond in N₂.</p>
+        </div>
+
+        <div class="note-block">
+          <h4>VSEPR Theory & Molecular Shape</h4>
+          <p>Valence Shell Electron Pair Repulsion: electron pairs (bonding and lone) repel each other and arrange to minimise repulsion. Lone pairs repel more strongly than bonding pairs.</p>
+          <div class="table-wrap">
+            <table>
+              <tr><th>Molecule</th><th>Bonding Pairs</th><th>Lone Pairs</th><th>Shape</th></tr>
+              <tr><td>CH₄ (methane)</td><td>4</td><td>0</td><td>Tetrahedral</td></tr>
+              <tr><td>NH₃ (ammonia)</td><td>3</td><td>1</td><td>Pyramidal</td></tr>
+              <tr><td>H₂O (water)</td><td>2</td><td>2</td><td>Bent/V-shape</td></tr>
+              <tr><td>CO₂</td><td>2 (double)</td><td>0</td><td>Linear</td></tr>
+            </table>
+          </div>
+          <div class="key-point">Ammonia is pyramidal, not tetrahedral, because the lone pair repels bonding pairs more strongly, compressing the bond angles below 109.5°.</div>
+        </div>
+
+        <div class="note-block">
+          <h4>Polar vs Non-Polar Molecules</h4>
+          <p>A bond is polar if there is a difference in electronegativity between atoms. A molecule is polar only if bond dipoles do <em>not</em> cancel out.</p>
+          <div class="table-wrap">
+            <table>
+              <tr><th>Molecule</th><th>Shape</th><th>Polarity</th><th>Reason</th></tr>
+              <tr><td>CO₂</td><td>Linear</td><td>Non-polar</td><td>Dipoles cancel (symmetric)</td></tr>
+              <tr><td>H₂O</td><td>Bent</td><td>Polar</td><td>Bent shape, dipoles don't cancel</td></tr>
+              <tr><td>CH₄</td><td>Tetrahedral</td><td>Non-polar</td><td>Symmetric; C–H bonds have low polarity</td></tr>
+              <tr><td>NH₃</td><td>Pyramidal</td><td>Polar</td><td>Asymmetric; N–H dipoles don't cancel</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="note-block">
+          <h4>Intermolecular Forces (IMFs)</h4>
+          <div class="table-wrap">
+            <table>
+              <tr><th>Force</th><th>Strength</th><th>Present In</th></tr>
+              <tr><td>Hydrogen bonding</td><td>Strongest IMF</td><td>Molecules with N–H, O–H or F–H bonds (e.g. water)</td></tr>
+              <tr><td>Dipole–dipole</td><td>Moderate</td><td>Polar molecules (e.g. HCl)</td></tr>
+              <tr><td>Dispersion forces</td><td>Weakest</td><td>All molecules; only force in non-polar (e.g. CH₄, C₂H₆)</td></tr>
+            </table>
+          </div>
+          <div class="key-point">Molecular substances have low melting/boiling points because only weak IMFs (not covalent bonds) need to be broken during phase changes.</div>
+          <div class="key-point">Molecular substances don't conduct electricity — no free ions or delocalised electrons.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module 4 -->
+    <div class="module">
+      <div class="module-header" onclick="toggleModule(this)">
+        <span class="module-num">04</span>
+        <span class="module-title">Metallic Bonding & Reactions of Metals</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="module-body">
+        <div class="note-block">
+          <h4>Metallic Bonding</h4>
+          <div class="key-point">A lattice of positive metal cations surrounded by a "sea" of delocalised valence electrons.</div>
+          <p>This model explains metals' key properties:</p>
+          <p><strong>Malleable/ductile:</strong> layers of cations can slide past each other without breaking the bond (delocalised electrons adjust).</p>
+          <p><strong>Electrical/heat conductors:</strong> delocalised electrons move freely through the lattice, transferring charge and energy.</p>
+          <p><strong>High melting points:</strong> strong electrostatic attraction between cations and electron sea requires much energy to overcome.</p>
+        </div>
+
+        <div class="note-block">
+          <h4>Reactivity Series & Reactions with Acids</h4>
+          <p>Metals react with acids by losing electrons (oxidation). More reactive metals lose electrons more readily.</p>
+          <div class="key-point">Reactivity order from your quiz: Magnesium > Zinc > Copper. Copper does not react with dilute HCl because it cannot displace hydrogen.</div>
+          <p>General equation: <span class="formula">Metal + HCl → Metal chloride + H₂</span></p>
+          <p>Alkali metals are not found free in nature because they react so readily with water and air.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /notes -->
+
+  <!-- ==================== QUIZ ==================== -->
+  <div id="quiz" class="section">
+    <div class="quiz-header">
+      <div class="progress-wrap">
+        <div class="progress-label">Progress: <span id="prog-label">0 / 20</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
+      </div>
+      <div class="score-badge">Score: <span id="score-display">0</span> pts</div>
+    </div>
+
+    <div id="quiz-questions"></div>
+
+    <div class="submit-wrap">
+      <button class="btn btn-submit" onclick="submitAll()">Submit All &amp; See Results</button>
+    </div>
+
+    <div class="results-card" id="results">
+      <div class="results-score" id="final-score">0%</div>
+      <div class="results-label">Final Score</div>
+      <div class="results-msg" id="results-msg"></div>
+      <button class="btn btn-retry" onclick="resetQuiz()">Try Again</button>
+    </div>
+  </div>
+
+</div><!-- /wrap -->
+
+<script>
+const questions = [
+  // MCQ
+  {
+    type: 'mcq', marks: 1,
+    topic: 'Elements & Atoms',
+    text: 'Which of the following best defines an <strong>element</strong>?',
+    options: [
+      'A substance made of two or more types of atoms bonded together',
+      'A pure substance made of only one type of atom, defined by its number of protons',
+      'A mixture of atoms with the same mass number',
+      'Any pure substance that cannot be broken down physically'
+    ],
+    answer: 1,
+    explanation: 'An element is defined by its atomic number (number of protons). All atoms of an element have the same number of protons, but may have different numbers of neutrons (isotopes) or electrons (ions).'
+  },
+  {
+    type: 'mcq', marks: 1,
+    topic: 'Isotopes & Ions',
+    text: 'An atom of ³⁵₁₇Cl forms a Cl⁻ ion. How many electrons does the ion have?',
+    options: ['16', '17', '18', '35'],
+    answer: 2,
+    explanation: 'Cl has 17 protons and normally 17 electrons. Gaining one electron gives it 18 electrons and a charge of −1.'
+  },
+  {
+    type: 'mcq', marks: 1,
+    topic: 'Periodic Trends',
+    text: 'What happens to atomic radius across Period 3 from left to right?',
+    options: [
+      'It increases because more electrons are added',
+      'It decreases because nuclear charge increases while shielding stays roughly constant',
+      'It stays the same because all atoms are in the same period',
+      'It increases because more protons repel electrons outward'
+    ],
+    answer: 1,
+    explanation: 'Across a period, each element has one more proton (stronger nuclear attraction) but electrons are added to the same shell (constant shielding), so atoms are pulled smaller.'
+  },
+  {
+    type: 'mcq', marks: 1,
+    topic: 'Electronic Configuration',
+    text: 'What is the full electronic configuration of sulfur (Z = 16)?',
+    options: [
+      '1s² 2s² 2p⁶ 3s² 3p²',
+      '1s² 2s² 2p⁶ 3s² 3p⁴',
+      '1s² 2s² 2p⁶ 3s⁶',
+      '1s² 2s² 2p⁴ 3s² 3p⁴'
+    ],
+    answer: 1,
+    explanation: 'Sulfur has 16 electrons. Fill: 1s²(2) + 2s²(4) + 2p⁶(10) + 3s²(12) + 3p⁴(16). So 1s² 2s² 2p⁶ 3s² 3p⁴.'
+  },
+  {
+    type: 'mcq', marks: 1,
+    topic: 'Molecular Shape',
+    text: 'Why is ammonia (NH₃) pyramidal rather than tetrahedral?',
+    options: [
+      'Nitrogen is too small to form four bonds',
+      'The lone pair repels the bonding pairs more strongly, compressing the shape',
+      'There are only three hydrogen atoms, so it must be pyramidal',
+      'Ammonia has no lone pairs on nitrogen'
+    ],
+    answer: 1,
+    explanation: 'NH₃ has 3 bonding pairs and 1 lone pair. Lone pairs repel bonding pairs more strongly than bonding pairs repel each other, pushing the H atoms down into a pyramidal shape.'
+  },
+  {
+    type: 'mcq', marks: 1,
+    topic: 'Polarity',
+    text: 'Which of these molecules is <strong>polar</strong>?',
+    options: ['CO₂', 'CH₄', 'H₂O', 'N₂'],
+    answer: 2,
+    explanation: 'Water (H₂O) is polar. Its bent shape means the O–H bond dipoles do not cancel. CO₂ is linear (dipoles cancel), CH₄ is symmetric tetrahedral, and N₂ has identical atoms so no dipole.'
+  },
+  {
+    type: 'mcq', marks: 1,
+    topic: 'Intermolecular Forces',
+    text: 'What is the dominant intermolecular force in liquid water?',
+    options: ['Dispersion forces', 'Dipole–dipole forces', 'Hydrogen bonding', 'Ionic bonding'],
+    answer: 2,
+    explanation: 'Water has O–H bonds, which enable hydrogen bonding — the strongest type of intermolecular force, requiring O, N, or F bonded to H.'
+  },
+  {
+    type: 'mcq', marks: 1,
+    topic: 'Metallic Bonding',
+    text: 'Which model best describes metallic bonding?',
+    options: [
+      'Cations and anions held in a rigid lattice',
+      'Atoms sharing electrons in fixed pairs',
+      'Positive metal cations surrounded by a sea of delocalised electrons',
+      'Neutral atoms held by dispersion forces'
+    ],
+    answer: 2,
+    explanation: 'Metallic bonding = lattice of positive cations (atoms that have lost their valence electrons) immersed in a mobile "sea" of delocalised electrons, creating strong electrostatic attraction.'
+  },
+
+  // Fill in blank
+  {
+    type: 'fitb', marks: 1,
+    topic: 'Atomic Structure',
+    parts: [
+      { text: 'The mass number (A) equals the number of ' },
+      { blank: true, answer: 'protons', accept: ['protons', 'proton'] },
+      { text: ' plus the number of ' },
+      { blank: true, answer: 'neutrons', accept: ['neutrons', 'neutron'] },
+      { text: '.' }
+    ],
+    explanation: 'A = Z + N. The mass number is the total count of protons and neutrons in the nucleus.'
+  },
+  {
+    type: 'fitb', marks: 1,
+    topic: 'Periodic Trends',
+    parts: [
+      { text: 'Electronegativity ' },
+      { blank: true, answer: 'decreases', accept: ['decreases', 'decrease'] },
+      { text: ' down Group 17 because atomic radius ' },
+      { blank: true, answer: 'increases', accept: ['increases', 'increase'] },
+      { text: ', weakening attraction for bonding electrons.' }
+    ],
+    explanation: 'As you go down any group, atoms get larger and the nucleus is further from the bonding electrons, so the pull on those electrons weakens.'
+  },
+  {
+    type: 'fitb', marks: 1,
+    topic: 'Covalent Bonding',
+    parts: [
+      { text: 'N₂ contains a ' },
+      { blank: true, answer: 'triple', accept: ['triple'] },
+      { text: ' covalent bond because each nitrogen atom needs ' },
+      { blank: true, answer: '3', accept: ['3', 'three'] },
+      { text: ' more electrons to complete its octet.' }
+    ],
+    explanation: 'Nitrogen has 5 valence electrons and needs 8. It shares 3 pairs of electrons with the other nitrogen atom, forming a triple bond (N≡N).'
+  },
+  {
+    type: 'fitb', marks: 1,
+    topic: 'Molecular Shape',
+    parts: [
+      { text: 'Carbon dioxide is ' },
+      { blank: true, answer: 'linear', accept: ['linear'] },
+      { text: ' in shape, making it ' },
+      { blank: true, answer: 'non-polar', accept: ['non-polar', 'nonpolar', 'non polar'] },
+      { text: ' overall because its bond dipoles cancel.' }
+    ],
+    explanation: 'CO₂ has two C=O polar bonds pointing in opposite directions. Because the molecule is linear and symmetric, the dipoles exactly cancel → non-polar molecule.'
+  },
+  {
+    type: 'fitb', marks: 1,
+    topic: 'Metallic Properties',
+    parts: [
+      { text: 'Metals are malleable because layers of ' },
+      { blank: true, answer: 'cations', accept: ['cations', 'ions', 'positive ions', 'metal ions'] },
+      { text: ' can slide past each other without breaking the ' },
+      { blank: true, answer: 'metallic', accept: ['metallic'] },
+      { text: ' bond.' }
+    ],
+    explanation: 'The delocalised electrons simply flow around the shifted ions, maintaining the bond — this is why metals can be hammered into shapes without shattering.'
+  },
+
+  // Short answer
+  {
+    type: 'short', marks: 2,
+    topic: 'Isotopes vs Ions',
+    text: 'Explain the difference between an isotope and an ion. <span class="q-marks">(2 marks)</span>',
+    modelAnswer: 'Isotopes are atoms of the same element with the same number of protons but different numbers of neutrons (different mass numbers). Ions are atoms or groups of atoms that have gained or lost electrons, giving them a positive or negative charge.'
+  },
+  {
+    type: 'short', marks: 2,
+    topic: 'Ionic Radius',
+    text: 'Explain why the ionic radius of S²⁻ is larger than the atomic radius of sulfur, with reference to electron–electron repulsion. <span class="q-marks">(2 marks)</span>',
+    modelAnswer: 'When sulfur gains two electrons to form S²⁻, the electron–electron repulsion increases because there are more electrons in the same orbitals. This repulsion pushes the electrons further apart, expanding the electron cloud and increasing the ionic radius.'
+  },
+  {
+    type: 'short', marks: 2,
+    topic: 'Periodic Trends',
+    text: 'Explain why reactivity increases down Group 1 (alkali metals). <span class="q-marks">(2 marks)</span>',
+    modelAnswer: 'As you move down Group 1, the outer electron is in a higher energy shell, so it is further from the nucleus and more shielded by inner electrons. This makes it easier to remove (lower ionisation energy), so the metal reacts more readily by losing that electron.'
+  },
+  {
+    type: 'short', marks: 2,
+    topic: 'Molecular Substances',
+    text: 'Explain why most molecular substances have low melting points compared to ionic compounds. <span class="q-marks">(2 marks)</span>',
+    modelAnswer: 'Molecular substances have strong covalent bonds within molecules but only weak intermolecular forces (e.g. dispersion forces, hydrogen bonds) between molecules. When melting, only these weak forces need to be overcome, so little energy is required. Ionic compounds have strong electrostatic attractions between ions throughout the lattice, requiring much more energy to break.'
+  },
+  {
+    type: 'short', marks: 2,
+    topic: 'Metallic Bonding',
+    text: 'Using metallic bonding theory, explain why metals are good conductors of electricity. <span class="q-marks">(2 marks)</span>',
+    modelAnswer: 'In metallic bonding, valence electrons are delocalised and free to move throughout the metal lattice. When a voltage is applied, these electrons can drift in one direction, transferring charge. Because they are not tied to specific atoms, they can move easily, making metals excellent electrical conductors.'
+  },
+  {
+    type: 'short', marks: 2,
+    topic: 'Reactivity of Metals',
+    text: 'A student tests magnesium, copper and zinc in dilute hydrochloric acid. Magnesium reacts vigorously, zinc reacts slowly, and copper does not react. Explain these observations in terms of electron loss. <span class="q-marks">(2 marks)</span>',
+    modelAnswer: 'Metals react with acid by losing electrons (forming cations). Magnesium loses electrons most readily (highest reactivity), reacting vigorously. Zinc loses electrons less easily, so it reacts slowly. Copper cannot lose electrons readily enough to displace hydrogen from the acid, so it does not react. The reactivity order is Mg > Zn > Cu.'
+  },
+];
+
+let scores = {};
+let answered = {};
+
+function buildQuiz() {
+  const container = document.getElementById('quiz-questions');
+  container.innerHTML = '';
+  scores = {};
+  answered = {};
+  updateProgress();
+
+  questions.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = 'card-' + i;
+
+    let html = `<div class="q-type-tag">${q.type === 'mcq' ? 'Multiple Choice' : q.type === 'fitb' ? 'Fill in the Blank' : 'Short Answer'} · ${q.topic}</div>`;
+
+    if (q.type === 'mcq') {
+      html += `<div class="q-text"><strong>Q${i+1}.</strong> ${q.text}</div>`;
+      html += '<div class="options">';
+      const letters = ['A','B','C','D'];
+      q.options.forEach((opt, j) => {
+        html += `<button class="option" onclick="checkMCQ(${i},${j})" id="opt-${i}-${j}">
+          <span class="opt-letter">${letters[j]}</span>${opt}
+        </button>`;
+      });
+      html += '</div>';
+    } else if (q.type === 'fitb') {
+      html += `<div class="q-text"><strong>Q${i+1}.</strong> Fill in the blanks:</div>`;
+      html += '<div class="fitb-wrap">';
+      let blankIdx = 0;
+      q.parts.forEach(part => {
+        if (part.blank) {
+          html += `<input class="fitb-input" id="fitb-${i}-${blankIdx}" type="text" placeholder="___" autocomplete="off">`;
+          blankIdx++;
+        } else {
+          html += `<span>${part.text}</span>`;
+        }
+      });
+      html += '</div>';
+      html += `<button class="btn btn-check" onclick="checkFITB(${i})">Check</button>`;
+    } else {
+      html += `<div class="q-text"><strong>Q${i+1}.</strong> ${q.text}</div>`;
+      html += `<textarea class="short-ans" id="short-${i}" placeholder="Write your answer here..."></textarea>`;
+      html += `<button class="btn btn-reveal" onclick="revealModel(${i})">Show model answer</button>`;
+    }
+
+    html += `<div class="feedback" id="feedback-${i}"></div>`;
+    card.innerHTML = html;
+    container.appendChild(card);
+  });
+}
+
+function checkMCQ(qi, selected) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+  const q = questions[qi];
+  const letters = ['A','B','C','D'];
+  q.options.forEach((_, j) => {
+    const btn = document.getElementById(`opt-${qi}-${j}`);
+    btn.disabled = true;
+    if (j === q.answer) btn.classList.add('correct');
+    else if (j === selected) btn.classList.add('incorrect');
+  });
+
+  const fb = document.getElementById(`feedback-${qi}`);
+  const card = document.getElementById(`card-${qi}`);
+  if (selected === q.answer) {
+    scores[qi] = q.marks;
+    fb.className = 'feedback correct';
+    fb.textContent = '✓ Correct! ' + q.explanation;
+    card.classList.add('answered-correct');
+  } else {
+    scores[qi] = 0;
+    fb.className = 'feedback incorrect';
+    fb.textContent = '✗ Incorrect. ' + q.explanation;
+    card.classList.add('answered-incorrect');
+  }
+  updateProgress();
+}
+
+function checkFITB(qi) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+  const q = questions[qi];
+  let allCorrect = true;
+  let blankIdx = 0;
+  q.parts.forEach(part => {
+    if (part.blank) {
+      const input = document.getElementById(`fitb-${qi}-${blankIdx}`);
+      const val = input.value.trim().toLowerCase();
+      const correct = part.accept.map(a => a.toLowerCase());
+      if (correct.includes(val)) {
+        input.classList.add('correct');
+        input.disabled = true;
+      } else {
+        input.classList.add('incorrect');
+        input.disabled = true;
+        input.value = input.value + ' (✗ ' + part.answer + ')';
+        allCorrect = false;
+      }
+      blankIdx++;
+    }
+  });
+  const fb = document.getElementById(`feedback-${qi}`);
+  const card = document.getElementById(`card-${qi}`);
+  if (allCorrect) {
+    scores[qi] = q.marks;
+    fb.className = 'feedback correct';
+    fb.textContent = '✓ All blanks correct! ' + q.explanation;
+    card.classList.add('answered-correct');
+  } else {
+    scores[qi] = 0;
+    fb.className = 'feedback incorrect';
+    fb.textContent = '✗ ' + q.explanation;
+    card.classList.add('answered-incorrect');
+  }
+  const btn = document.querySelector(`#card-${qi} .btn-check`);
+  if (btn) btn.disabled = true;
+  updateProgress();
+}
+
+function revealModel(qi) {
+  const q = questions[qi];
+  const fb = document.getElementById(`feedback-${qi}`);
+  fb.className = 'feedback reveal';
+  fb.innerHTML = '<strong>Model answer:</strong> ' + q.modelAnswer;
+  answered[qi] = true;
+  scores[qi] = 0;
+  updateProgress();
+}
+
+function updateProgress() {
+  const total = questions.length;
+  const done = Object.keys(answered).length;
+  document.getElementById('prog-label').textContent = `${done} / ${total}`;
+  document.getElementById('prog-fill').style.width = `${(done/total)*100}%`;
+  const pts = Object.values(scores).reduce((a,b) => a+b, 0);
+  document.getElementById('score-display').textContent = pts;
+}
+
+function submitAll() {
+  // auto-answer unchecked FITB
+  questions.forEach((q, i) => {
+    if (!answered[i] && q.type === 'fitb') checkFITB(i);
+    if (!answered[i] && q.type === 'short') {
+      answered[i] = true; scores[i] = 0; updateProgress();
+    }
+    if (!answered[i] && q.type === 'mcq') {
+      // mark as unanswered
+      answered[i] = true; scores[i] = 0; updateProgress();
+    }
+  });
+
+  const maxPts = questions.reduce((a,q) => a + q.marks, 0);
+  const got = Object.values(scores).reduce((a,b) => a+b, 0);
+  const pct = Math.round((got / maxPts) * 100);
+
+  const results = document.getElementById('results');
+  results.classList.add('show');
+  document.getElementById('final-score').textContent = `${pct}%`;
+  document.getElementById('results-msg').textContent = pct >= 80
+    ? 'Excellent work — you\'re SAC ready! 🎉'
+    : pct >= 60
+    ? 'Good effort! Review the lesson notes for your weak spots.'
+    : 'Keep going — revisit the notes and try again!';
+  results.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function resetQuiz() {
+  document.getElementById('results').classList.remove('show');
+  buildQuiz();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showSection(name) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function toggleModule(header) {
+  const module = header.parentElement;
+  module.classList.toggle('open');
+}
+
+buildQuiz();
+</script>
+</body>
+</html>
