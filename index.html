@@ -3,1149 +3,1566 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VCE Chemistry Unit 1 – Study & Quiz</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,900;1,300&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>VCE Psychology U3 AOS2 — Study Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0d0f14;
-    --surface: #141720;
-    --surface2: #1c2030;
-    --border: #2a2f42;
-    --accent: #7ee8a2;
-    --accent2: #5bc4f5;
-    --warn: #f5a623;
-    --danger: #f56c6c;
-    --text: #e8ecf4;
-    --muted: #7a8099;
-    --correct: #7ee8a2;
-    --incorrect: #f56c6c;
+    --navy: #0d1b2a;
+    --navy2: #1b2e40;
+    --teal: #1a7f7f;
+    --teal-light: #24a8a8;
+    --gold: #e8b84b;
+    --gold-pale: #fdf4dc;
+    --cream: #f7f3ee;
+    --red: #c0392b;
+    --red-pale: #fdf0ee;
+    --green: #1a7a4f;
+    --green-pale: #edf7f2;
+    --text: #1c1c2e;
+    --muted: #5a6473;
+    --border: #e0dbd3;
+    --card: #ffffff;
+    --shadow: 0 2px 20px rgba(13,27,42,0.08);
+    --shadow-lg: 0 8px 40px rgba(13,27,42,0.14);
+    --radius: 12px;
+    --radius-lg: 20px;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
     color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
     min-height: 100vh;
-    overflow-x: hidden;
+    font-size: 15px;
+    line-height: 1.65;
   }
 
-  /* BG decoration */
-  body::before {
-    content: '';
-    position: fixed;
-    top: -200px; right: -200px;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(126,232,162,0.06) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  body::after {
-    content: '';
-    position: fixed;
-    bottom: -200px; left: -200px;
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(91,196,245,0.05) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .wrap {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* Header */
+  /* ── HEADER ── */
   header {
-    text-align: center;
-    margin-bottom: 60px;
-    animation: fadeDown 0.7s ease both;
+    background: var(--navy);
+    color: white;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.3);
   }
-  .badge {
-    display: inline-block;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-    border: 1px solid rgba(126,232,162,0.3);
-    padding: 4px 14px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-  }
-  h1 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 12px;
-    background: linear-gradient(135deg, #e8ecf4 30%, var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  header p {
-    color: var(--muted);
-    font-size: 1rem;
-  }
-
-  /* Nav tabs */
-  .tabs {
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 28px;
     display: flex;
-    gap: 8px;
-    margin-bottom: 40px;
-    background: var(--surface);
-    padding: 6px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    animation: fadeUp 0.7s 0.1s ease both;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
   }
-  .tab {
-    flex: 1;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 10px;
-    background: transparent;
-    color: var(--muted);
+  .brand {
+    display: flex;
+    flex-direction: column;
+  }
+  .brand-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: white;
+  }
+  .brand-sub {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .diff-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 100px;
+    padding: 6px 8px;
+  }
+  .diff-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); letter-spacing: 0.03em; }
+  .diff-btn {
+    background: none; border: none; cursor: pointer;
+    padding: 5px 16px; border-radius: 100px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.88rem;
-    font-weight: 500;
-    cursor: pointer;
+    font-size: 0.82rem; font-weight: 600;
+    color: rgba(255,255,255,0.5);
     transition: all 0.2s;
   }
-  .tab.active {
-    background: var(--surface2);
-    color: var(--text);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  .diff-btn.active {
+    background: var(--gold);
+    color: var(--navy);
   }
-  .tab:hover:not(.active) { color: var(--text); }
+  .diff-btn:not(.active):hover { color: white; }
 
-  /* Sections */
-  .section { display: none; animation: fadeUp 0.4s ease both; }
-  .section.active { display: block; }
-
-  /* LESSON NOTES */
-  .module {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    margin-bottom: 24px;
-    overflow: hidden;
+  /* ── NAV TABS ── */
+  nav {
+    background: var(--navy2);
+    border-bottom: 2px solid rgba(255,255,255,0.06);
   }
-  .module-header {
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 28px;
     display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 20px 24px;
-    cursor: pointer;
-    user-select: none;
-    transition: background 0.2s;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
-  .module-header:hover { background: var(--surface2); }
-  .module-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--accent);
-    background: rgba(126,232,162,0.1);
-    border: 1px solid rgba(126,232,162,0.2);
-    border-radius: 6px;
-    padding: 3px 8px;
-    flex-shrink: 0;
-  }
-  .module-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    flex: 1;
-  }
-  .chevron {
-    color: var(--muted);
-    transition: transform 0.3s;
-    font-size: 1.1rem;
-  }
-  .module.open .chevron { transform: rotate(180deg); }
-  .module-body {
-    display: none;
-    padding: 0 24px 24px;
-    border-top: 1px solid var(--border);
-  }
-  .module.open .module-body { display: block; }
-
-  .note-block {
-    margin-top: 18px;
-  }
-  .note-block h4 {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--accent2);
-    margin-bottom: 10px;
-    margin-top: 18px;
-  }
-  .note-block p {
-    color: #b0b8cc;
-    font-size: 0.93rem;
-    line-height: 1.7;
-    margin-bottom: 8px;
-  }
-  .key-point {
-    background: rgba(126,232,162,0.07);
-    border-left: 3px solid var(--accent);
-    border-radius: 0 8px 8px 0;
-    padding: 12px 16px;
-    margin: 10px 0;
-    font-size: 0.9rem;
-    color: var(--text);
-    line-height: 1.6;
-  }
-  .formula {
-    font-family: 'DM Mono', monospace;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 16px;
-    margin: 8px 0;
-    font-size: 0.9rem;
-    color: var(--accent2);
-    display: inline-block;
-  }
-  .table-wrap { overflow-x: auto; margin: 12px 0; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-  th {
-    background: var(--surface2);
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 10px 14px;
-    text-align: left;
-    border: 1px solid var(--border);
-  }
-  td {
-    padding: 9px 14px;
-    border: 1px solid var(--border);
-    color: #b0b8cc;
-    line-height: 1.5;
-  }
-  tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
-
-  /* QUIZ */
-  .quiz-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 28px;
-  }
-  .progress-wrap {
-    flex: 1;
-    margin-right: 20px;
-  }
-  .progress-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    margin-bottom: 6px;
-  }
-  .progress-bar {
-    height: 4px;
-    background: var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    border-radius: 4px;
-    transition: width 0.4s ease;
-    width: 0%;
-  }
-  .score-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.85rem;
-    color: var(--accent);
-    background: rgba(126,232,162,0.1);
-    border: 1px solid rgba(126,232,162,0.2);
-    padding: 6px 14px;
-    border-radius: 20px;
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    background: none; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    padding: 12px 18px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
     white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .tab-btn:not(.active):hover { color: rgba(255,255,255,0.75); }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 28px 80px;
+  }
+  .section { display: none; }
+  .section.active { display: block; animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  /* ── SECTION TITLES ── */
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .section-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 32px;
+    max-width: 680px;
   }
 
-  .q-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
+  /* ── CARDS ── */
+  .card {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
     padding: 28px;
     margin-bottom: 20px;
-    transition: border-color 0.3s;
+    border: 1px solid var(--border);
+  }
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .badge-teal { background: #e0f4f4; color: var(--teal); }
+  .badge-gold { background: var(--gold-pale); color: #a07822; }
+  .badge-red { background: var(--red-pale); color: var(--red); }
+  .badge-green { background: var(--green-pale); color: var(--green); }
+  .badge-navy { background: #e8edf3; color: var(--navy); }
+
+  /* ── REMEMBER BOXES ── */
+  .remember-box {
+    background: #fff8e7;
+    border: 1.5px solid #e8b84b44;
+    border-left: 4px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin: 14px 0;
+  }
+  .remember-box-title {
+    font-weight: 600; font-size: 0.78rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: #a07822; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .remember-box ul { padding-left: 18px; }
+  .remember-box li { margin-bottom: 6px; font-size: 0.88rem; color: #4a3c0e; }
+
+  .warning-box {
+    background: var(--red-pale);
+    border: 1.5px solid #c0392b33;
+    border-left: 4px solid var(--red);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin: 14px 0;
+  }
+  .warning-box-title {
+    font-weight: 600; font-size: 0.78rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--red); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .warning-box ul { padding-left: 18px; }
+  .warning-box li { margin-bottom: 6px; font-size: 0.88rem; color: #5a1a14; }
+
+  /* ── TABLES ── */
+  .tbl-wrap { overflow-x: auto; margin: 14px 0; border-radius: var(--radius); border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th {
+    background: var(--navy);
+    color: white;
+    padding: 11px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+  }
+  td { padding: 11px 16px; border-top: 1px solid var(--border); vertical-align: top; }
+  tr:nth-child(even) td { background: #f9f8f6; }
+  tr:hover td { background: #f0ede8; transition: background 0.15s; }
+
+  /* ── KEY TERM GRID ── */
+  .term-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin: 14px 0; }
+  .term-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    border-top: 3px solid var(--teal);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .term-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .term-name { font-weight: 700; color: var(--teal); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .term-abbr { color: var(--muted); font-size: 0.78rem; margin-bottom: 8px; }
+  .term-def { font-size: 0.875rem; color: var(--text); }
+
+  /* ── PHASE STEPPER ── */
+  .phase-stepper { display: flex; gap: 0; margin: 18px 0; }
+  .phase-step {
+    flex: 1;
+    padding: 16px 18px;
+    position: relative;
+    background: white;
+    border: 1px solid var(--border);
+    border-right: none;
+    font-size: 0.85rem;
+  }
+  .phase-step:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+  .phase-step:last-child { border-radius: 0 var(--radius) var(--radius) 0; border-right: 1px solid var(--border); }
+  .phase-step.highlight { background: var(--navy); color: white; border-color: var(--navy); }
+  .phase-step.highlight .phase-sub { color: rgba(255,255,255,0.6); }
+  .phase-num { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 800; color: var(--teal); line-height: 1; margin-bottom: 6px; }
+  .phase-step.highlight .phase-num { color: var(--gold); }
+  .phase-label { font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .phase-sub { color: var(--muted); font-size: 0.82rem; }
+  .phase-arrow { position: absolute; right: -12px; top: 50%; transform: translateY(-50%); z-index: 2; width: 22px; height: 22px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; }
+
+  /* ── CONSEQUENCE GRID ── */
+  .consequence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .cons-card {
+    border-radius: var(--radius);
+    padding: 20px;
+    border: 2px solid transparent;
+    transition: transform 0.2s;
+  }
+  .cons-card:hover { transform: translateY(-2px); }
+  .cons-card.pos-reinf { background: #edf7f2; border-color: #1a7a4f33; }
+  .cons-card.neg-reinf { background: #e8f4fb; border-color: #1a6a9a33; }
+  .cons-card.pos-pun { background: var(--red-pale); border-color: #c0392b33; }
+  .cons-card.neg-pun { background: #fdf4dc; border-color: #e8b84b44; }
+  .cons-icon { font-size: 1.6rem; margin-bottom: 8px; }
+  .cons-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+  .cons-card.pos-reinf .cons-name { color: var(--green); }
+  .cons-card.neg-reinf .cons-name { color: #1a6a9a; }
+  .cons-card.pos-pun .cons-name { color: var(--red); }
+  .cons-card.neg-pun .cons-name { color: #a07822; }
+  .cons-formula { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.03em; margin-bottom: 8px; }
+  .cons-def { font-size: 0.83rem; color: var(--muted); margin-bottom: 10px; }
+  .cons-example { font-size: 0.8rem; font-style: italic; color: var(--text); background: rgba(255,255,255,0.7); padding: 8px 12px; border-radius: 8px; }
+
+  /* ── PRACTICE QUESTIONS ── */
+  .q-block {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 16px;
     position: relative;
     overflow: hidden;
   }
-  .q-card::before {
+  .q-block::before {
     content: '';
     position: absolute;
-    top: 0; left: 0;
-    width: 3px; height: 100%;
-    background: var(--border);
-    transition: background 0.3s;
+    top: 0; left: 0; bottom: 0;
+    width: 5px;
+    background: var(--teal);
   }
-  .q-card.answered-correct::before { background: var(--correct); }
-  .q-card.answered-incorrect::before { background: var(--incorrect); }
+  .q-block.hard::before { background: var(--red); }
+  .q-block.medium::before { background: var(--gold); }
 
-  .q-type-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 10px;
-  }
-  .q-text {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    color: var(--text);
-  }
-  .q-marks {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--warn);
-    margin-left: 8px;
-  }
-
-  /* MCQ */
-  .options { display: flex; flex-direction: column; gap: 10px; }
-  .option {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: left;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.92rem;
-  }
-  .option:hover:not(:disabled) {
-    border-color: var(--accent2);
-    background: rgba(91,196,245,0.05);
-  }
-  .option .opt-letter {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 2px 7px;
-    flex-shrink: 0;
-    transition: all 0.2s;
-  }
-  .option.correct {
-    border-color: var(--correct);
-    background: rgba(126,232,162,0.08);
-    color: var(--correct);
-  }
-  .option.correct .opt-letter {
-    background: rgba(126,232,162,0.2);
-    border-color: var(--correct);
-    color: var(--correct);
-  }
-  .option.incorrect {
-    border-color: var(--incorrect);
-    background: rgba(245,108,108,0.08);
-    color: var(--incorrect);
-  }
-  .option.incorrect .opt-letter {
-    background: rgba(245,108,108,0.2);
-    border-color: var(--incorrect);
-    color: var(--incorrect);
-  }
-  .option:disabled { cursor: default; }
-
-  /* Fill in blank */
-  .fitb-wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 0.95rem; line-height: 2; }
-  .fitb-input {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    padding: 5px 12px;
-    outline: none;
-    transition: border-color 0.2s;
-    min-width: 120px;
-    text-align: center;
-  }
-  .fitb-input:focus { border-color: var(--accent2); }
-  .fitb-input.correct { border-color: var(--correct); background: rgba(126,232,162,0.08); color: var(--correct); }
-  .fitb-input.incorrect { border-color: var(--incorrect); background: rgba(245,108,108,0.08); color: var(--incorrect); }
-
-  /* Short answer */
-  .short-ans {
-    width: 100%;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    padding: 12px 16px;
-    resize: vertical;
-    min-height: 90px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .short-ans:focus { border-color: var(--accent2); }
-
-  /* Buttons */
-  .btn {
-    padding: 11px 24px;
-    border-radius: 10px;
-    border: none;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .btn-check {
-    background: var(--accent);
-    color: #0d1209;
-    margin-top: 16px;
-  }
-  .btn-check:hover { opacity: 0.88; transform: translateY(-1px); }
-  .btn-check:disabled { opacity: 0.4; cursor: default; transform: none; }
-  .btn-reveal {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    margin-top: 16px;
-    margin-left: 10px;
-    font-size: 0.82rem;
-  }
-  .btn-reveal:hover { color: var(--text); border-color: var(--muted); }
-
-  .feedback {
-    margin-top: 14px;
-    padding: 12px 16px;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    display: none;
-  }
-  .feedback.correct {
-    background: rgba(126,232,162,0.08);
-    border: 1px solid rgba(126,232,162,0.2);
-    color: var(--correct);
-    display: block;
-  }
-  .feedback.incorrect {
-    background: rgba(245,108,108,0.08);
-    border: 1px solid rgba(245,108,108,0.2);
-    color: var(--incorrect);
-    display: block;
-  }
-  .feedback.reveal {
-    background: rgba(91,196,245,0.07);
-    border: 1px solid rgba(91,196,245,0.2);
-    color: var(--accent2);
-    display: block;
-  }
-
-  /* Results */
-  .results-card {
-    text-align: center;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 48px 32px;
-    display: none;
-  }
-  .results-card.show { display: block; animation: fadeUp 0.5s ease both; }
-  .results-score {
+  .q-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+  .q-num {
     font-family: 'Fraunces', serif;
-    font-size: 5rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1;
+    font-size: 1.1rem; font-weight: 800;
+    background: var(--navy); color: white;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
   }
-  .results-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin: 10px 0 24px;
+  .q-num.hard { background: var(--red); }
+  .q-num.medium { background: #c87c00; }
+  .q-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+  .q-text { font-size: 0.93rem; line-height: 1.7; color: var(--text); }
+  .q-marks { font-size: 0.8rem; color: var(--muted); margin-top: 8px; font-style: italic; }
+
+  .reveal-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--navy); color: white;
+    border: none; cursor: pointer;
+    padding: 10px 20px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; font-weight: 600;
+    margin-top: 16px;
+    transition: background 0.2s, transform 0.1s;
+    letter-spacing: 0.02em;
   }
-  .results-msg {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 1.3rem;
-    color: #b0b8cc;
-    margin-bottom: 28px;
+  .reveal-btn:hover { background: var(--teal); transform: translateY(-1px); }
+  .reveal-btn.revealed { background: #2d5a27; }
+
+  .answer-panel {
+    display: none;
+    margin-top: 16px;
+    padding: 20px;
+    background: var(--green-pale);
+    border: 1.5px solid #1a7a4f33;
+    border-radius: var(--radius);
+    animation: slideDown 0.2s ease;
   }
-  .btn-retry {
-    background: var(--surface2);
+  .answer-panel.open { display: block; }
+  @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+  .answer-title { font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--green); margin-bottom: 12px; }
+  .answer-content { font-size: 0.88rem; line-height: 1.75; }
+  .answer-content strong { color: var(--navy); }
+  .mark-line { background: white; border: 1px solid #1a7a4f22; border-radius: 8px; padding: 10px 14px; margin: 6px 0; font-size: 0.85rem; }
+  .mark-line::before { content: '✓ '; color: var(--green); font-weight: 700; }
+
+  .framework-box {
+    background: #f0f7ff;
+    border: 1.5px solid #2e74b522;
+    border-left: 4px solid #2e74b5;
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin: 14px 0;
+  }
+  .framework-title { font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.07em; color: #2e74b5; margin-bottom: 12px; }
+  .framework-step { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; font-size: 0.88rem; }
+  .step-num { background: #2e74b5; color: white; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+  .step-content strong { display: block; margin-bottom: 2px; }
+  .step-content span { color: var(--muted); font-size: 0.83rem; }
+
+  /* ── SCENARIOS ── */
+  .scenario-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+  .scenario-card {
+    background: white;
     border: 1px solid var(--border);
-    color: var(--text);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    transition: box-shadow 0.2s, transform 0.2s;
+    cursor: pointer;
   }
-  .btn-retry:hover { border-color: var(--accent); color: var(--accent); }
+  .scenario-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+  .scenario-icon { font-size: 2rem; margin-bottom: 12px; }
+  .scenario-topic { font-size: 0.73rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--teal); margin-bottom: 6px; }
+  .scenario-title { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; color: var(--navy); }
+  .scenario-text { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+  .scenario-reveal-btn {
+    background: none; border: 1.5px solid var(--teal); color: var(--teal);
+    padding: 7px 16px; border-radius: 100px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .scenario-reveal-btn:hover { background: var(--teal); color: white; }
+  .scenario-answer { display: none; margin-top: 14px; padding: 14px; background: #f0faf6; border-radius: 10px; font-size: 0.83rem; line-height: 1.7; }
+  .scenario-answer.open { display: block; animation: slideDown 0.2s ease; }
+  .scenario-answer strong { color: var(--teal); }
 
-  .submit-wrap {
-    text-align: center;
-    margin-top: 36px;
-    padding-top: 28px;
-    border-top: 1px solid var(--border);
-  }
-  .btn-submit {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: #0d1209;
-    font-size: 1rem;
-    padding: 14px 36px;
-    border-radius: 12px;
-    font-weight: 500;
-  }
-  .btn-submit:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(126,232,162,0.2); }
+  /* difficulty filter */
+  .q-block.hidden { display: none; }
 
-  /* Animations */
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+  /* ── COMPARISON ── */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  .compare-col { padding: 24px; }
+  .compare-col:first-child { background: var(--navy); color: white; }
+  .compare-col:last-child { background: white; }
+  .compare-header { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; }
+  .compare-col:first-child .compare-header { color: var(--gold); }
+  .compare-col:last-child .compare-header { color: var(--navy); }
+  .compare-item { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; }
+  .compare-col:last-child .compare-item { border-bottom-color: var(--border); }
+  .compare-label { font-size: 0.73rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .compare-col:first-child .compare-label { color: rgba(255,255,255,0.5); }
+  .compare-col:last-child .compare-label { color: var(--muted); }
+
+  /* ── OBSERVATIONAL STAGES ── */
+  .stages-flow { display: flex; flex-direction: column; gap: 0; margin: 16px 0; }
+  .stage-row {
+    display: flex; align-items: stretch; gap: 0;
+    border: 1px solid var(--border);
+    border-bottom: none;
+    background: white;
   }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
+  .stage-row:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+  .stage-row:last-child { border-bottom: 1px solid var(--border); border-radius: 0 0 var(--radius) var(--radius); }
+  .stage-letter {
+    width: 52px; flex-shrink: 0;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 800; color: var(--gold);
+  }
+  .stage-row:first-child .stage-letter { border-radius: var(--radius) 0 0 0; }
+  .stage-row:last-child .stage-letter { border-radius: 0 0 0 var(--radius); }
+  .stage-content { padding: 16px 20px; flex: 1; }
+  .stage-name { font-weight: 700; font-size: 0.85rem; color: var(--navy); margin-bottom: 4px; }
+  .stage-def { font-size: 0.83rem; color: var(--muted); margin-bottom: 6px; }
+  .stage-tip { font-size: 0.8rem; color: var(--teal); font-style: italic; }
+
+  /* ── ABORIGINAL ── */
+  .ways-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin: 16px 0; }
+  .way-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    border-top: 3px solid;
+    font-size: 0.85rem;
+  }
+  .way-card:nth-child(1) { border-top-color: #1a7f7f; }
+  .way-card:nth-child(2) { border-top-color: #7b4fa6; }
+  .way-card:nth-child(3) { border-top-color: #c0392b; }
+  .way-card:nth-child(4) { border-top-color: #d68e18; }
+  .way-card:nth-child(5) { border-top-color: #1a7a4f; }
+  .way-card:nth-child(6) { border-top-color: #2e74b5; }
+  .way-card:nth-child(7) { border-top-color: #c04f8f; }
+  .way-card:nth-child(8) { border-top-color: #5a6a2a; }
+  .way-name { font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .way-def { color: var(--muted); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    .phase-stepper { flex-direction: column; }
+    .phase-step { border-right: 1px solid var(--border); border-bottom: none; border-radius: 0; }
+    .phase-step:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+    .phase-step:last-child { border-bottom: 1px solid var(--border); border-radius: 0 0 var(--radius) var(--radius); }
+    .phase-arrow { display: none; }
+    .consequence-grid, .compare-grid { grid-template-columns: 1fr; }
+    .header-inner { flex-direction: column; align-items: flex-start; }
   }
 
-  @media (max-width: 600px) {
-    .tab { font-size: 0.78rem; padding: 8px 10px; }
-    .q-card { padding: 20px 16px; }
-  }
+  /* ── EMPTY STATE FOR DIFFICULTY FILTER ── */
+  .no-questions { display: none; text-align: center; padding: 40px; color: var(--muted); font-style: italic; }
+  .no-questions.visible { display: block; }
+
+  /* progress bar */
+  .progress-bar { height: 3px; background: var(--border); border-radius: 10px; margin-bottom: 24px; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); border-radius: 10px; transition: width 0.5s ease; }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header>
-    <div class="badge">VCE Chemistry · Unit 1 · Year 11</div>
-    <h1>Elements, Periodic Table<br>&amp; Covalent Substances</h1>
-    <p>Lesson notes + scored quiz covering your SAC topics</p>
-  </header>
-
-  <div class="tabs">
-    <button class="tab active" onclick="showSection('notes')">📖 Lesson Notes</button>
-    <button class="tab" onclick="showSection('quiz')">⚗️ Quiz</button>
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-title">VCE Psych AOS 2 — Study Hub</span>
+      <span class="brand-sub">Unit 3 · How Do People Learn and Remember?</span>
+    </div>
+    <div class="diff-toggle">
+      <span class="diff-label">Difficulty</span>
+      <button class="diff-btn active" onclick="setDiff('easy')">Easy</button>
+      <button class="diff-btn" onclick="setDiff('medium')">Medium</button>
+      <button class="diff-btn" onclick="setDiff('hard')">Hard</button>
+      <button class="diff-btn" onclick="setDiff('all')">All</button>
+    </div>
   </div>
+</header>
 
-  <!-- ==================== NOTES ==================== -->
-  <div id="notes" class="section active">
+<nav>
+  <div class="nav-inner">
+    <button class="tab-btn active" onclick="showTab('overview')">📚 Overview</button>
+    <button class="tab-btn" onclick="showTab('classical')">🔔 Classical</button>
+    <button class="tab-btn" onclick="showTab('operant')">⚡ Operant</button>
+    <button class="tab-btn" onclick="showTab('observational')">👁 Observational</button>
+    <button class="tab-btn" onclick="showTab('aboriginal')">🌏 Indigenous</button>
+    <button class="tab-btn" onclick="showTab('practice')">✏️ Practice Qs</button>
+    <button class="tab-btn" onclick="showTab('scenarios')">🎭 Niche Scenarios</button>
+    <button class="tab-btn" onclick="showTab('frameworks')">🗂 Frameworks</button>
+  </div>
+</nav>
 
-    <!-- Module 1 -->
-    <div class="module open">
-      <div class="module-header" onclick="toggleModule(this)">
-        <span class="module-num">01</span>
-        <span class="module-title">Elements, Atoms & the Periodic Table</span>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="module-body">
-        <div class="note-block">
-          <h4>What is an Element?</h4>
-          <div class="key-point">An <strong>element</strong> is a pure substance made up of only one type of atom, defined by its number of protons (atomic number, Z).</div>
-          <p>Each element has a unique atomic number. Elements are organised in the <strong>periodic table</strong> by increasing atomic number, arranged into periods (rows) and groups (columns).</p>
-        </div>
+<main>
 
-        <div class="note-block">
-          <h4>Atomic Structure</h4>
-          <p>Every atom has a nucleus containing protons and neutrons, with electrons orbiting in shells.</p>
-          <div class="table-wrap">
-            <table>
-              <tr><th>Particle</th><th>Location</th><th>Charge</th><th>Relative Mass</th></tr>
-              <tr><td>Proton</td><td>Nucleus</td><td>+1</td><td>1</td></tr>
-              <tr><td>Neutron</td><td>Nucleus</td><td>0</td><td>1</td></tr>
-              <tr><td>Electron</td><td>Shells</td><td>−1</td><td>≈0</td></tr>
-            </table>
-          </div>
-          <p>Key formulae: <span class="formula">A = Z + N</span> (Mass number = Protons + Neutrons)</p>
-        </div>
+<!-- ════════════════════════════════════════
+     OVERVIEW
+════════════════════════════════════════ -->
+<section id="overview" class="section active">
+  <h1 class="section-title">Study Hub Overview</h1>
+  <p class="section-desc">Everything you need for Unit 3 AOS 2. Navigate the tabs above to explore each topic, practise exam questions, and master answer frameworks.</p>
 
-        <div class="note-block">
-          <h4>Isotopes vs Ions</h4>
-          <div class="key-point"><strong>Isotopes:</strong> same element (same protons), different number of neutrons → different mass number. E.g. ¹²C and ¹⁴C.</div>
-          <div class="key-point"><strong>Ions:</strong> atoms that have gained or lost electrons, giving them a charge. Cations (+) lose electrons; anions (−) gain electrons.</div>
-          <p>Example: ³⁵₁₇Cl⁻ has 17 protons, 18 neutrons, and <em>18</em> electrons (gained one).</p>
-        </div>
-
-        <div class="note-block">
-          <h4>Electronic Configuration</h4>
-          <p>Electrons fill subshells in order of increasing energy: 1s → 2s → 2p → 3s → 3p → ...</p>
-          <p>Subshell capacity: s = 2, p = 6, d = 10.</p>
-          <p>Example — Sulfur (Z = 16): <span class="formula">1s² 2s² 2p⁶ 3s² 3p⁴</span></p>
-          <p>The period number = highest principal quantum number; the group = valence electrons (for main group).</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Module 2 -->
-    <div class="module">
-      <div class="module-header" onclick="toggleModule(this)">
-        <span class="module-num">02</span>
-        <span class="module-title">Periodic Trends</span>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="module-body">
-        <div class="note-block">
-          <h4>Atomic Radius</h4>
-          <div class="key-point">Across a period (left → right): atomic radius <strong>decreases</strong> — nuclear charge increases, shielding stays constant, so electrons are pulled in closer.</div>
-          <div class="key-point">Down a group: atomic radius <strong>increases</strong> — new electron shells added, more shielding, nucleus less effective at holding outer electrons.</div>
-        </div>
-
-        <div class="note-block">
-          <h4>Ionisation Energy</h4>
-          <p><strong>First ionisation energy (IE₁)</strong>: energy to remove one mole of electrons from one mole of gaseous atoms.</p>
-          <div class="key-point">Across a period: IE₁ increases — greater nuclear charge, same shielding, harder to remove electrons.</div>
-          <div class="key-point">Down a group: IE₁ decreases — outer electrons further away and more shielded.</div>
-        </div>
-
-        <div class="note-block">
-          <h4>Electronegativity</h4>
-          <p>Measure of an atom's ability to attract electrons in a bond.</p>
-          <div class="key-point">Increases across a period; decreases down a group. Fluorine is the most electronegative element.</div>
-          <p>Down Group 17: atomic radius increases → nucleus further from bonding electrons → weaker attraction → lower electronegativity.</p>
-        </div>
-
-        <div class="note-block">
-          <h4>Ionic Radius</h4>
-          <div class="key-point">Anions (e.g. S²⁻) are <em>larger</em> than the parent atom — extra electrons increase electron–electron repulsion, expanding the electron cloud.</div>
-          <div class="key-point">Cations (e.g. Mg²⁺) are <em>smaller</em> than the parent atom — fewer electrons, same nuclear charge pulls them in tighter.</div>
-        </div>
-
-        <div class="note-block">
-          <h4>Metallic Character & Group 1</h4>
-          <p>Metallic character increases down a group. Group 1 metals are the most reactive metals.</p>
-          <div class="key-point">Reactivity increases down Group 1 because the outer electron is further from the nucleus and more shielded, making it easier to lose.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Module 3 -->
-    <div class="module">
-      <div class="module-header" onclick="toggleModule(this)">
-        <span class="module-num">03</span>
-        <span class="module-title">Covalent Bonding & Molecular Structure</span>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="module-body">
-        <div class="note-block">
-          <h4>Covalent Bonds</h4>
-          <p>Formed when two non-metals <strong>share electrons</strong> to achieve a full outer shell (octet rule).</p>
-          <div class="table-wrap">
-            <table>
-              <tr><th>Bond Type</th><th>Pairs Shared</th><th>Example</th></tr>
-              <tr><td>Single</td><td>1</td><td>H₂O, CH₄</td></tr>
-              <tr><td>Double</td><td>2</td><td>O₂, CO₂</td></tr>
-              <tr><td>Triple</td><td>3</td><td>N₂, C₂H₂</td></tr>
-            </table>
-          </div>
-          <p>Nitrogen (5 valence electrons) needs 3 more → forms a triple bond in N₂.</p>
-        </div>
-
-        <div class="note-block">
-          <h4>VSEPR Theory & Molecular Shape</h4>
-          <p>Valence Shell Electron Pair Repulsion: electron pairs (bonding and lone) repel each other and arrange to minimise repulsion. Lone pairs repel more strongly than bonding pairs.</p>
-          <div class="table-wrap">
-            <table>
-              <tr><th>Molecule</th><th>Bonding Pairs</th><th>Lone Pairs</th><th>Shape</th></tr>
-              <tr><td>CH₄ (methane)</td><td>4</td><td>0</td><td>Tetrahedral</td></tr>
-              <tr><td>NH₃ (ammonia)</td><td>3</td><td>1</td><td>Pyramidal</td></tr>
-              <tr><td>H₂O (water)</td><td>2</td><td>2</td><td>Bent/V-shape</td></tr>
-              <tr><td>CO₂</td><td>2 (double)</td><td>0</td><td>Linear</td></tr>
-            </table>
-          </div>
-          <div class="key-point">Ammonia is pyramidal, not tetrahedral, because the lone pair repels bonding pairs more strongly, compressing the bond angles below 109.5°.</div>
-        </div>
-
-        <div class="note-block">
-          <h4>Polar vs Non-Polar Molecules</h4>
-          <p>A bond is polar if there is a difference in electronegativity between atoms. A molecule is polar only if bond dipoles do <em>not</em> cancel out.</p>
-          <div class="table-wrap">
-            <table>
-              <tr><th>Molecule</th><th>Shape</th><th>Polarity</th><th>Reason</th></tr>
-              <tr><td>CO₂</td><td>Linear</td><td>Non-polar</td><td>Dipoles cancel (symmetric)</td></tr>
-              <tr><td>H₂O</td><td>Bent</td><td>Polar</td><td>Bent shape, dipoles don't cancel</td></tr>
-              <tr><td>CH₄</td><td>Tetrahedral</td><td>Non-polar</td><td>Symmetric; C–H bonds have low polarity</td></tr>
-              <tr><td>NH₃</td><td>Pyramidal</td><td>Polar</td><td>Asymmetric; N–H dipoles don't cancel</td></tr>
-            </table>
-          </div>
-        </div>
-
-        <div class="note-block">
-          <h4>Intermolecular Forces (IMFs)</h4>
-          <div class="table-wrap">
-            <table>
-              <tr><th>Force</th><th>Strength</th><th>Present In</th></tr>
-              <tr><td>Hydrogen bonding</td><td>Strongest IMF</td><td>Molecules with N–H, O–H or F–H bonds (e.g. water)</td></tr>
-              <tr><td>Dipole–dipole</td><td>Moderate</td><td>Polar molecules (e.g. HCl)</td></tr>
-              <tr><td>Dispersion forces</td><td>Weakest</td><td>All molecules; only force in non-polar (e.g. CH₄, C₂H₆)</td></tr>
-            </table>
-          </div>
-          <div class="key-point">Molecular substances have low melting/boiling points because only weak IMFs (not covalent bonds) need to be broken during phase changes.</div>
-          <div class="key-point">Molecular substances don't conduct electricity — no free ions or delocalised electrons.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Module 4 -->
-    <div class="module">
-      <div class="module-header" onclick="toggleModule(this)">
-        <span class="module-num">04</span>
-        <span class="module-title">Metallic Bonding & Reactions of Metals</span>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="module-body">
-        <div class="note-block">
-          <h4>Metallic Bonding</h4>
-          <div class="key-point">A lattice of positive metal cations surrounded by a "sea" of delocalised valence electrons.</div>
-          <p>This model explains metals' key properties:</p>
-          <p><strong>Malleable/ductile:</strong> layers of cations can slide past each other without breaking the bond (delocalised electrons adjust).</p>
-          <p><strong>Electrical/heat conductors:</strong> delocalised electrons move freely through the lattice, transferring charge and energy.</p>
-          <p><strong>High melting points:</strong> strong electrostatic attraction between cations and electron sea requires much energy to overcome.</p>
-        </div>
-
-        <div class="note-block">
-          <h4>Reactivity Series & Reactions with Acids</h4>
-          <p>Metals react with acids by losing electrons (oxidation). More reactive metals lose electrons more readily.</p>
-          <div class="key-point">Reactivity order from your quiz: Magnesium > Zinc > Copper. Copper does not react with dilute HCl because it cannot displace hydrogen.</div>
-          <p>General equation: <span class="formula">Metal + HCl → Metal chloride + H₂</span></p>
-          <p>Alkali metals are not found free in nature because they react so readily with water and air.</p>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /notes -->
-
-  <!-- ==================== QUIZ ==================== -->
-  <div id="quiz" class="section">
-    <div class="quiz-header">
-      <div class="progress-wrap">
-        <div class="progress-label">Progress: <span id="prog-label">0 / 20</span></div>
-        <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
-      </div>
-      <div class="score-badge">Score: <span id="score-display">0</span> pts</div>
-    </div>
-
-    <div id="quiz-questions"></div>
-
-    <div class="submit-wrap">
-      <button class="btn btn-submit" onclick="submitAll()">Submit All &amp; See Results</button>
-    </div>
-
-    <div class="results-card" id="results">
-      <div class="results-score" id="final-score">0%</div>
-      <div class="results-label">Final Score</div>
-      <div class="results-msg" id="results-msg"></div>
-      <button class="btn btn-retry" onclick="resetQuiz()">Try Again</button>
+  <div class="card">
+    <div class="card-title">📋 Topics in AOS 2 <span class="badge badge-navy">VCAA Study Design</span></div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>KKDP</th><th>Topic</th><th>Key Focus</th></tr>
+        <tr><td><strong>9</strong></td><td>Behaviourist Approaches to Learning</td><td>Classical conditioning (3 phases) + Operant conditioning (ABC model, reinforcement & punishment)</td></tr>
+        <tr><td><strong>10</strong></td><td>Social-Cognitive Approaches</td><td>Observational learning — Attention, Retention, Reproduction, Motivation, Reinforcement</td></tr>
+        <tr><td><strong>11</strong></td><td>Aboriginal & Torres Strait Islander Approaches</td><td>Systems approach — multimodal, holistic, embedded in relationships, patterned on Country</td></tr>
+      </table>
     </div>
   </div>
 
-</div><!-- /wrap -->
+  <div class="card">
+    <div class="card-title">⚡ Quick Distinctions — What Type of Learning?</div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Clue in Scenario</th><th>Most Likely Type</th><th>Why</th></tr>
+        <tr><td>Salivation, blinking, fear response, sweating</td><td>Classical Conditioning</td><td>Involuntary/reflexive → classical</td></tr>
+        <tr><td>Stopping/starting a deliberate action</td><td>Operant Conditioning</td><td>Voluntary behaviour → operant</td></tr>
+        <tr><td>Watching someone else do something</td><td>Observational Learning</td><td>Learning via model</td></tr>
+        <tr><td>Getting a reward/punishment after acting</td><td>Operant Conditioning</td><td>Consequence follows voluntary behaviour</td></tr>
+        <tr><td>Association between two stimuli (not a reward)</td><td>Classical Conditioning</td><td>NS + UCS pairing → involuntary CR</td></tr>
+        <tr><td>Avoiding something out of fear (learned)</td><td>Classical Conditioning</td><td>Fear/avoidance is reflexive/involuntary</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="remember-box">
+    <div class="remember-box-title">⭐ Golden Rules for All Questions</div>
+    <ul>
+      <li>Always check: is the response <strong>voluntary</strong> (operant) or <strong>involuntary/reflexive</strong> (classical)?</li>
+      <li>For extended response questions: use <strong>correct terminology</strong> — examiners award marks for NS, UCS, UCR, CS, CR, antecedent, behaviour, consequence, positive/negative reinforcement/punishment.</li>
+      <li>Always <strong>reference the scenario</strong> — vague generic answers rarely get full marks.</li>
+      <li>For operant conditioning consequences: name the type AND explain the effect on future behaviour.</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     CLASSICAL CONDITIONING
+════════════════════════════════════════ -->
+<section id="classical" class="section">
+  <h1 class="section-title">Classical Conditioning</h1>
+  <p class="section-desc">Involuntary learning through the repeated association of stimuli. The learner is passive.</p>
+
+  <div class="card">
+    <div class="card-title">🔑 The Five Key Terms</div>
+    <div class="term-grid">
+      <div class="term-card">
+        <div class="term-name">Neutral Stimulus</div>
+        <div class="term-abbr">NS</div>
+        <div class="term-def">Initially produces <strong>no relevant response</strong>. Presented before (or simultaneously with) the UCS. Becomes the CS after conditioning.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Unconditioned Stimulus</div>
+        <div class="term-abbr">UCS</div>
+        <div class="term-def">Naturally and automatically produces a response — <strong>no learning required</strong>. E.g. food, puff of air, electric shock.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Unconditioned Response</div>
+        <div class="term-abbr">UCR</div>
+        <div class="term-def">The <strong>natural, automatic, involuntary</strong> response to the UCS. E.g. salivation to food, blinking to a puff of air.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Conditioned Stimulus</div>
+        <div class="term-abbr">CS</div>
+        <div class="term-def">The <strong>previously neutral</strong> stimulus that now produces a response after repeated pairing with the UCS.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Conditioned Response</div>
+        <div class="term-abbr">CR</div>
+        <div class="term-def">The <strong>learned, involuntary</strong> response to the CS alone. Similar to the UCR. Always directed toward the CS.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📈 The Three-Phase Process</div>
+    <div class="phase-stepper">
+      <div class="phase-step">
+        <div class="phase-num">1</div>
+        <div class="phase-label">Before Conditioning</div>
+        <div class="phase-sub"><strong>NS → No response</strong><br>UCS → UCR<br><br>The NS is neutral — it produces no relevant response. The UCS automatically produces the UCR.</div>
+        <div class="phase-arrow">→</div>
+      </div>
+      <div class="phase-step highlight">
+        <div class="phase-num">2</div>
+        <div class="phase-label">During Conditioning</div>
+        <div class="phase-sub"><strong>NS + UCS → UCR</strong><br>(repeated pairings)<br><br>NS is presented immediately <strong>before</strong> the UCS. The two are repeatedly paired until an association forms. This is acquisition.</div>
+        <div class="phase-arrow">→</div>
+      </div>
+      <div class="phase-step">
+        <div class="phase-num">3</div>
+        <div class="phase-label">After Conditioning</div>
+        <div class="phase-sub"><strong>CS → CR</strong><br><br>The NS has become the CS. Presented alone, it produces the CR — a learned, involuntary response, without the UCS being present.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🐕 Pavlov's Classic Example</div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Phase</th><th>Stimulus</th><th>Response</th></tr>
+        <tr><td><strong>Before</strong></td><td>Bell (NS)</td><td>No response</td></tr>
+        <tr><td><strong>Before</strong></td><td>Food (UCS)</td><td>Salivation (UCR)</td></tr>
+        <tr><td><strong>During</strong></td><td>Bell (NS) + Food (UCS)</td><td>Salivation (UCR) — repeated many times</td></tr>
+        <tr><td><strong>After</strong></td><td>Bell (CS)</td><td>Salivation (CR)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📝 Answer Framework — 3-Phase Extended Response</div>
+    <div class="framework-box">
+      <div class="framework-title">🗂 How to structure a 3-phase answer</div>
+      <div class="framework-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>Name the type of conditioning</strong>
+          <span>"This scenario illustrates classical conditioning, a behaviourist approach where learning occurs through the repeated involuntary association of stimuli."</span>
+        </div>
+      </div>
+      <div class="framework-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>Before conditioning: Identify NS and UCS + UCR</strong>
+          <span>"Before conditioning, [NS] produces no relevant response in [subject]. [UCS] naturally produces [UCR]."</span>
+        </div>
+      </div>
+      <div class="framework-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>During conditioning: NS before UCS, repeated</strong>
+          <span>"During conditioning, [NS] is repeatedly presented immediately before [UCS], which produces [UCR]. This association is formed through repeated pairings."</span>
+        </div>
+      </div>
+      <div class="framework-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <strong>After conditioning: CS produces CR alone</strong>
+          <span>"After conditioning (due to acquisition), [CS] alone produces the [CR] — without the UCS being present."</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="remember-box">
+    <div class="remember-box-title">⭐ Classical Conditioning — Things to Remember</div>
+    <ul>
+      <li>You <strong>MUST include all 5 terms</strong> in a 3-phase extended response: NS, UCS, UCR, CS, CR.</li>
+      <li>NS must be presented <strong>BEFORE</strong> (or simultaneously with) the UCS — never after.</li>
+      <li>The CR is directed toward the <strong>CS</strong> (e.g. dogs salivate <em>at the bell</em>, not at food).</li>
+      <li>Mention <strong>repeated pairings</strong> — this is required for full marks.</li>
+      <li>The shorter the time gap between NS and UCS, the faster the learning.</li>
+      <li>Classical conditioning produces <strong>INVOLUNTARY</strong> responses — the learner is <strong>passive</strong>.</li>
+      <li>Some conditioning occurs after <strong>one trial</strong> (e.g. phobias, taste aversion).</li>
+    </ul>
+  </div>
+
+  <div class="warning-box">
+    <div class="warning-box-title">⚠️ Common Errors — Classical Conditioning</div>
+    <ul>
+      <li>Confusing which is the NS and which is the UCS — identify which stimulus needs NO learning to produce a response (UCS).</li>
+      <li>Forgetting to mention 'repeated associations' during Phase 2 — this costs marks.</li>
+      <li>Saying the learner is 'active' — classical conditioning makes the learner <strong>passive</strong>.</li>
+      <li>In 2024 Q6b: Omitting 'sound' from the neutral stimulus description — must specify the sound of the electronic bell, not just "the bell."</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     OPERANT CONDITIONING
+════════════════════════════════════════ -->
+<section id="operant" class="section">
+  <h1 class="section-title">Operant Conditioning</h1>
+  <p class="section-desc">Voluntary behaviour is shaped by its consequences. Developed by B.F. Skinner in the 1930s.</p>
+
+  <div class="card">
+    <div class="card-title">📋 The ABC Model (Three Phases)</div>
+    <div class="phase-stepper">
+      <div class="phase-step">
+        <div class="phase-num">A</div>
+        <div class="phase-label">Antecedent</div>
+        <div class="phase-sub">The stimulus or environment that <strong>precedes</strong> the behaviour. Signals the likely consequence. Also called the discriminative stimulus.</div>
+        <div class="phase-arrow">→</div>
+      </div>
+      <div class="phase-step highlight">
+        <div class="phase-num">B</div>
+        <div class="phase-label">Behaviour</div>
+        <div class="phase-sub">The <strong>voluntary</strong> action performed by the learner in response to the antecedent. The learner is <strong>active</strong>.</div>
+        <div class="phase-arrow">→</div>
+      </div>
+      <div class="phase-step">
+        <div class="phase-num">C</div>
+        <div class="phase-label">Consequence</div>
+        <div class="phase-sub">Occurs <strong>immediately</strong> after the behaviour. Makes the behaviour more or less likely to occur in the future in the presence of the antecedent.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚡ The Four Types of Consequences</div>
+    <div class="consequence-grid">
+      <div class="cons-card pos-reinf">
+        <div class="cons-icon">➕😊</div>
+        <div class="cons-name">Positive Reinforcement</div>
+        <div class="cons-formula">Desirable stimulus ADDED → Behaviour INCREASES</div>
+        <div class="cons-def">A desirable stimulus is added after a behaviour, making it more likely to be repeated.</div>
+        <div class="cons-example">Getting a sticker for staying on task → likely to stay on task again</div>
+      </div>
+      <div class="cons-card neg-reinf">
+        <div class="cons-icon">➖😌</div>
+        <div class="cons-name">Negative Reinforcement</div>
+        <div class="cons-formula">Undesirable stimulus REMOVED → Behaviour INCREASES</div>
+        <div class="cons-def">An undesirable stimulus is removed after a behaviour, making it more likely to be repeated.</div>
+        <div class="cons-example">Taking painkillers removes headache → more likely to take painkillers again</div>
+      </div>
+      <div class="cons-card pos-pun">
+        <div class="cons-icon">➕😖</div>
+        <div class="cons-name">Positive Punishment</div>
+        <div class="cons-formula">Undesirable stimulus ADDED → Behaviour DECREASES</div>
+        <div class="cons-def">An undesirable stimulus is added after a behaviour, making it less likely to be repeated.</div>
+        <div class="cons-example">Receiving a fine for speeding → less likely to speed again</div>
+      </div>
+      <div class="cons-card neg-pun">
+        <div class="cons-icon">➖😒</div>
+        <div class="cons-name">Negative Punishment (Response Cost)</div>
+        <div class="cons-formula">Desirable stimulus REMOVED → Behaviour DECREASES</div>
+        <div class="cons-def">A desirable stimulus is removed after a behaviour, making it less likely to be repeated.</div>
+        <div class="cons-example">Phone confiscated for misbehaving → less likely to misbehave again</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚖️ Classical vs Operant — Side by Side</div>
+    <div class="compare-grid">
+      <div class="compare-col">
+        <div class="compare-header">Classical Conditioning</div>
+        <div class="compare-item"><div class="compare-label">Response type</div>Involuntary / reflexive</div>
+        <div class="compare-item"><div class="compare-label">Learner role</div>Passive</div>
+        <div class="compare-item"><div class="compare-label">Consequence</div>No consequence involved</div>
+        <div class="compare-item"><div class="compare-label">Association</div>Between two stimuli (NS + UCS)</div>
+        <div class="compare-item"><div class="compare-label">Three phases</div>Before / During / After</div>
+        <div class="compare-item"><div class="compare-label">Order</div>NS presented before UCS</div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-header">Operant Conditioning</div>
+        <div class="compare-item"><div class="compare-label">Response type</div>Voluntary / deliberate</div>
+        <div class="compare-item"><div class="compare-label">Learner role</div>Active</div>
+        <div class="compare-item"><div class="compare-label">Consequence</div>Consequence follows behaviour</div>
+        <div class="compare-item"><div class="compare-label">Association</div>Between behaviour and consequence</div>
+        <div class="compare-item"><div class="compare-label">Three phases</div>Antecedent / Behaviour / Consequence</div>
+        <div class="compare-item"><div class="compare-label">Order</div>Behaviour occurs, then consequence</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="remember-box">
+    <div class="remember-box-title">⭐ Operant Conditioning — Things to Remember</div>
+    <ul>
+      <li><strong>Positive = added. Negative = removed.</strong> Nothing to do with good/bad.</li>
+      <li><strong>Reinforcement always INCREASES behaviour.</strong> Punishment always DECREASES behaviour.</li>
+      <li>The consequence must <strong>immediately follow</strong> the behaviour to be effective (2024 Q15).</li>
+      <li>Always state: type of consequence + what was added/removed + effect on future behaviour.</li>
+      <li>Antecedent does <strong>NOT</strong> directly produce the response — the behaviour does (2021 Q10, 57% correct).</li>
+      <li>Stopping/starting a voluntary action (e.g. video games, crossing the road) = <strong>operant</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="warning-box">
+    <div class="warning-box-title">⚠️ Common Errors — Operant Conditioning</div>
+    <ul>
+      <li>Reading the question from the wrong person's perspective (e.g. the child's rather than the parent's) — always identify <strong>who</strong> the question is about.</li>
+      <li>Confusing negative reinforcement with punishment — <strong>neg. reinforcement INCREASES behaviour.</strong></li>
+      <li>Only naming "treat" or "fine" as the consequence without labelling the type and effect.</li>
+      <li>Forgetting that after-school detentions are ineffective because there is a <strong>delay</strong> between behaviour and consequence.</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     OBSERVATIONAL LEARNING
+════════════════════════════════════════ -->
+<section id="observational" class="section">
+  <h1 class="section-title">Observational Learning</h1>
+  <p class="section-desc">Learning by watching the behaviour of a model and the consequences of that behaviour. Bandura's social-cognitive approach.</p>
+
+  <div class="card">
+    <div class="card-title">🔁 The Five Stages — ARRM-R</div>
+    <div class="stages-flow">
+      <div class="stage-row">
+        <div class="stage-letter">A</div>
+        <div class="stage-content">
+          <div class="stage-name">Attention</div>
+          <div class="stage-def">The learner must actively focus on the model. More likely if the model has high status, is similar to, or known by the learner.</div>
+          <div class="stage-tip">Exam tip: Describe <em>what</em> the learner is focusing on and <em>why</em> they would pay attention.</div>
+        </div>
+      </div>
+      <div class="stage-row">
+        <div class="stage-letter">R</div>
+        <div class="stage-content">
+          <div class="stage-name">Retention</div>
+          <div class="stage-def">The learner must create a mental representation of the behaviour and remember it. If they can't remember, they can't replicate.</div>
+          <div class="stage-tip">Exam tip: Link to memory consolidation — the learner stores a mental image/representation of the behaviour.</div>
+        </div>
+      </div>
+      <div class="stage-row">
+        <div class="stage-letter">R</div>
+        <div class="stage-content">
+          <div class="stage-name">Reproduction</div>
+          <div class="stage-def">The learner must have the physical and mental capability to convert memory into action. May not be able to replicate if lacking strength, coordination, etc.</div>
+          <div class="stage-tip">⚠️ In 2020 VCAA Q4b, reproduction was NOT awarded marks — read questions carefully.</div>
+        </div>
+      </div>
+      <div class="stage-row">
+        <div class="stage-letter">M</div>
+        <div class="stage-content">
+          <div class="stage-name">Motivation</div>
+          <div class="stage-def">The learner must want (desire) to reproduce the behaviour. Can be intrinsic (internal desire) or extrinsic (external rewards).</div>
+          <div class="stage-tip">Exam tip: Explain what drives the learner to want to perform the behaviour.</div>
+        </div>
+      </div>
+      <div class="stage-row">
+        <div class="stage-letter">R</div>
+        <div class="stage-content">
+          <div class="stage-name">Reinforcement</div>
+          <div class="stage-def">A desirable consequence increases the likelihood of the behaviour. Sources: vicarious reinforcement (watching model rewarded), external reinforcement, or self-reinforcement.</div>
+          <div class="stage-tip">Exam tip: Vicarious reinforcement = seeing someone ELSE rewarded increases your own motivation to perform the behaviour.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">👤 Bandura's Research</div>
+    <p style="font-size:0.9rem;line-height:1.7;color:var(--muted)">Albert Bandura (1960s) used his Bobo Doll experiments to show that children who watched adults behave aggressively toward a doll were more likely to display aggression themselves. He emphasised that learning is <strong>not automatic</strong> — the learner must consciously process and decide to replicate the behaviour (cognitive component).</p>
+    <div class="tbl-wrap" style="margin-top:16px">
+      <table>
+        <tr><th>Type of Reinforcement</th><th>Source</th><th>Example</th></tr>
+        <tr><td>Vicarious reinforcement</td><td>Observing the model being rewarded</td><td>Watching a classmate get praised for answering correctly</td></tr>
+        <tr><td>External reinforcement</td><td>Rewarded by someone else after performing the behaviour</td><td>Teacher praises your answer</td></tr>
+        <tr><td>Self-reinforcement</td><td>Rewarding yourself</td><td>Feeling proud after finishing an assignment</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="remember-box">
+    <div class="remember-box-title">⭐ Observational Learning — Things to Remember</div>
+    <ul>
+      <li>All five stages must occur for learning to be <strong>complete</strong>: A → R → R → M → R</li>
+      <li>Behaviour can remain <strong>latent</strong> (hidden) until needed — immediate replication is NOT required.</li>
+      <li>Bandura emphasised <strong>cognitive processes</strong> — the learner must consciously decide to replicate.</li>
+      <li>Vicarious punishment (watching someone punished) DECREASES likelihood of that behaviour in the observer.</li>
+      <li>When describing a process, give 1 mark = identify the process + 1 mark = justify with the scenario.</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     ABORIGINAL & TORRES STRAIT ISLANDER
+════════════════════════════════════════ -->
+<section id="aboriginal" class="section">
+  <h1 class="section-title">Aboriginal & Torres Strait Islander Approaches</h1>
+  <p class="section-desc">A systems approach where learning is embedded in relationships and a multimodal network patterned on Country.</p>
+
+  <div class="card">
+    <div class="card-title">🌿 Key Concepts</div>
+    <div class="term-grid">
+      <div class="term-card">
+        <div class="term-name">Ways of Knowing</div>
+        <div class="term-def">Multimodal methods of learning and communicating knowledge through cultural activities (song, dance, art) and practices. Unique, complex, and sophisticated systems different to Western learning.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Country</div>
+        <div class="term-def">The <strong>whole system</strong> of living entities — including landscape, animals, plants, climate, and waterways — in which humans are just a part. All learning is patterned on Country.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Holistic Learning</div>
+        <div class="term-def">Involves the whole person — relationships with people, living things, and spirituality. Not broken into separate subjects like Western education.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Multimodal</div>
+        <div class="term-def">Using a variety of methods to learn (song, dance, story, art, observation, practice). Enhances memory compared to single-mode Western approaches.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Kinship</div>
+        <div class="term-def">Family/community structure that determines who holds knowledge and who has access to it. Sharing knowledge is a person's responsibility. Creates a cohesive, harmonious community.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-name">Systems Approach</div>
+        <div class="term-def">Multiple aspects interact and influence each other. Learning is not restricted to teacher-student; the entire community teaches. All elements are inter-related.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🌀 The 8 Ways of Knowing</div>
+    <div class="ways-grid">
+      <div class="way-card"><div class="way-name">Story Sharing</div><div class="way-def">We connect through the stories we share.</div></div>
+      <div class="way-card"><div class="way-name">Learning Maps</div><div class="way-def">We picture our pathways of knowledge.</div></div>
+      <div class="way-card"><div class="way-name">Non-verbal</div><div class="way-def">We see, think, act, make and share without words.</div></div>
+      <div class="way-card"><div class="way-name">Symbols & Images</div><div class="way-def">We keep and share knowledge with art and objects.</div></div>
+      <div class="way-card"><div class="way-name">Land Links</div><div class="way-def">We work with lessons from land and nature.</div></div>
+      <div class="way-card"><div class="way-name">Non-linear</div><div class="way-def">We put different ideas together and create new knowledge.</div></div>
+      <div class="way-card"><div class="way-name">Deconstruct/Reconstruct</div><div class="way-def">We work from wholes to parts, watching and then doing.</div></div>
+      <div class="way-card"><div class="way-name">Community Links</div><div class="way-def">We bring new knowledge home to help our mob.</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📊 Western vs Indigenous Learning</div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Feature</th><th>Western (Written Culture)</th><th>Aboriginal & TSI (Oral Culture)</th></tr>
+        <tr><td>Structure</td><td>Separated into subjects (science, PE, arts)</td><td>Integrated — all aspects of culture connect</td></tr>
+        <tr><td>Who teaches</td><td>Teacher → students</td><td>Entire community — everyone teaches and learns</td></tr>
+        <tr><td>Methods</td><td>Predominantly written/verbal (single mode)</td><td>Multimodal — song, dance, art, story, observation</td></tr>
+        <tr><td>Relationship to land</td><td>Often abstracted from environment</td><td>Deeply embedded in and connected to Country</td></tr>
+        <tr><td>Knowledge holder</td><td>Specialists/teachers hold separate knowledge</td><td>Knowledge held within kinship structures</td></tr>
+        <tr><td>Memory aids</td><td>Acronyms, acrostics, method of loci</td><td>Songlines, oral narrative, dance, connection to Country</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="remember-box">
+    <div class="remember-box-title">⭐ Indigenous Learning — Things to Remember</div>
+    <ul>
+      <li>You do <strong>NOT</strong> need specific examples from particular communities — understand the general system.</li>
+      <li>Key buzzwords for marks: <strong>multimodal, holistic, embedded in relationships, patterned on Country, kinship, systems approach.</strong></li>
+      <li>Buzzwords alone are NOT enough — you must answer the question <strong>directly</strong>.</li>
+      <li>DO NOT say learning is 'a collection of artefacts' — this was explicitly wrong in 2023 VCAA.</li>
+      <li>The systems approach means multiple aspects <strong>inter-relate and influence each other</strong> — not just one teacher and one subject.</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     PRACTICE QUESTIONS
+════════════════════════════════════════ -->
+<section id="practice" class="section">
+  <h1 class="section-title">Practice Questions</h1>
+  <p class="section-desc">Work through these VCAA-style questions. Use the difficulty toggle in the header to filter. Click "Show Answer" to reveal the model response.</p>
+
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+
+  <!-- EASY QUESTIONS -->
+  <div class="q-block easy" data-diff="easy">
+    <div class="q-header">
+      <div class="q-num">1</div>
+      <div>
+        <div class="q-meta"><span class="badge badge-teal">Easy</span><span class="badge badge-navy">Classical Conditioning</span><span class="badge badge-gold">MCQ</span></div>
+        <div class="q-text">Sally takes the bus to school every day. She salivates each time the bus driver gives her a lolly. Sally now salivates when she sees the bus approach her bus stop.<br><br>In terms of classical conditioning, the conditioned response in this scenario is:</div>
+        <div style="margin-top:14px">
+          <label style="display:block;padding:8px 12px;border:1px solid var(--border);border-radius:8px;margin:5px 0;cursor:pointer;font-size:0.88rem"><input type="radio" name="q1" value="A" style="margin-right:8px">A. Sally salivating when she sees the bus approach her bus stop</label>
+          <label style="display:block;padding:8px 12px;border:1px solid var(--border);border-radius:8px;margin:5px 0;cursor:pointer;font-size:0.88rem"><input type="radio" name="q1" value="B" style="margin-right:8px">B. Sally waiting for the bus to take her to school</label>
+          <label style="display:block;padding:8px 12px;border:1px solid var(--border);border-radius:8px;margin:5px 0;cursor:pointer;font-size:0.88rem"><input type="radio" name="q1" value="C" style="margin-right:8px">C. Sally seeing the bus driver in his seat</label>
+          <label style="display:block;padding:8px 12px;border:1px solid var(--border);border-radius:8px;margin:5px 0;cursor:pointer;font-size:0.88rem"><input type="radio" name="q1" value="D" style="margin-right:8px">D. The bus driver giving out lollies</label>
+        </div>
+        <div class="q-marks">2018 VCAA Exam Q15 — 97% got this correct</div>
+      </div>
+    </div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">👁 Show Answer</button>
+    <div class="answer-panel">
+      <div class="answer-title">✅ Correct Answer: A</div>
+      <div class="answer-content">
+        <div class="mark-line">The CR is Sally salivating <strong>in response to the CS</strong> (the bus approaching).</div>
+        <div class="mark-line">The bus = CS (previously NS). Salivating to the bus = CR (learned response to CS).</div>
+        <p style="margin-top:10px;font-size:0.85rem;color:var(--muted)">B is wrong — waiting for the bus is a voluntary, deliberate action, not an involuntary conditioned response. D is the UCS. C is a neutral factor not in the conditioning chain.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block easy" data-diff="easy">
+    <div class="q-header">
+      <div class="q-num">2</div>
+      <div>
+        <div class="q-meta"><span class="badge badge-teal">Easy</span><span class="badge badge-navy">Operant Conditioning</span><span class="badge badge-gold">MCQ</span></div>
+        <div class="q-text">The school-wide positive behaviour support framework suggests that primary school teachers can increase positive behaviours during lessons by using positive reinforcement.<br><br>Which one of the following could be the most effective example of positive reinforcement?</div>
+        <div style="margin-top:14px">
+          <label style="display:block;padding:8px 12px;border:1px solid var(--border);border-radius:8px;margin:5px 0;cursor:pointer;font-size:0.88rem"><input type="radio" name="q2" value="A" style="margin-right:8px">A. Keeping distracted students inside at recess</label>
+          <label style="display:block;padding:8px 12px;border:1px solid var(--border);border-radius:8px;margin:5px 0;cursor:pointer;font-size:0.88rem"><input type="radio" name="q2" value="B" style="margin-right:8px">B. Smiling at students as they enter the classroom</label>
+          <label style="display:block;padding:8px 12px;border:1px solid var(--border);border-radius:8px;margin:5px 0;cursor:pointer;font-size:0.88rem"><input type="radio" name="q2" value="C" style="margin-right:8px">C. Giving focused students no homework for that evening</label>
+          <label style="display:block;padding:8px 12px;border:1px solid var(--border);border-radius:8px;margin:5px 0;cursor:pointer;font-size:0.88rem"><input type="radio" name="q2" value="D" style="margin-right:8px">D. Providing students who stay on task with a sticker during the lesson</label>
+        </div>
+        <div class="q-marks">2024 VCAA Exam Q14 — 95% got this correct</div>
+      </div>
+    </div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">👁 Show Answer</button>
+    <div class="answer-panel">
+      <div class="answer-title">✅ Correct Answer: D</div>
+      <div class="answer-content">
+        <div class="mark-line">A sticker (desirable stimulus) is ADDED following the target behaviour (staying on task) → positive reinforcement increases the behaviour.</div>
+        <div class="mark-line">A is negative punishment (removing recess). B is not contingent on any specific behaviour. C is negative reinforcement (removing homework).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block easy" data-diff="easy">
+    <div class="q-header">
+      <div class="q-num">3</div>
+      <div>
+        <div class="q-meta"><span class="badge badge-teal">Easy</span><span class="badge badge-navy">Observational Learning</span><span class="badge badge-gold">MCQ</span></div>
+        <div class="q-text">Elijah paid careful attention to his friend making a funny video of her cat so that he could make one of his own cat, Kato. When Elijah posted his video on social media, he received hundreds of likes in the first hour, which made him happy.<br><br>In terms of operant conditioning, the number of likes is:</div>
+        <div style="margin-top:14px">
+          <label style="display:block;padding:8px 12px;border:1px solid var(--border);border-radius:8px;margin:5px 0;cursor:pointer;font-size:0.88rem"><input type="radio" name="q3" value="A" style="margin-right:8px">A. An antecedent</label>
+          <label style="display:block;padding:8px 12px;border:1px solid var(--border);border-radius:8px;margin:5px 0;cursor:pointer;font-size:0.88rem"><input type="radio" name="q3" value="B" style="margin-right:8px">B. A response cost</label>
+          <label style="display:block;padding:8px 12px;border:1px solid var(--border);border-radius:8px;margin:5px 0;cursor:pointer;font-size:0.88rem"><input type="radio" name="q3" value="C" style="margin-right:8px">C. A positive reinforcer</label>
+          <label style="display:block;padding:8px 12px;border:1px solid var(--border);border-radius:8px;margin:5px 0;cursor:pointer;font-size:0.88rem"><input type="radio" name="q3" value="D" style="margin-right:8px">D. Causes a voluntary change in Elijah's behaviour</label>
+        </div>
+        <div class="q-marks">2018 VCAA Exam Q18 — 93% got this correct</div>
+      </div>
+    </div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">👁 Show Answer</button>
+    <div class="answer-panel">
+      <div class="answer-title">✅ Correct Answer: C</div>
+      <div class="answer-content">
+        <div class="mark-line">Likes = desirable stimulus added after the behaviour of posting a video → positive reinforcer that increases likelihood of posting again.</div>
+        <div class="mark-line">D is wrong because reinforcers influence probability of future behaviour — not directly "cause" it. The reinforcer makes the behaviour more likely, not certain.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEDIUM QUESTIONS -->
+  <div class="q-block medium" data-diff="medium">
+    <div class="q-header">
+      <div class="q-num medium">4</div>
+      <div>
+        <div class="q-meta"><span class="badge badge-gold">Medium</span><span class="badge badge-navy">Classical Conditioning</span><span class="badge badge-teal">Extended Response</span></div>
+        <div class="q-text">Many species of birds can be conditioned to avoid predators by pairing the sound of the predator with an unpleasant stimulus, such as a puff of air. Over time, the birds learn that the sound of the predator alone is dangerous.<br><br>Name the behaviourist approach to learning that is discussed in this scenario and outline the three-phase process of conditioning to avoid predators.</div>
+        <div class="q-marks">2023 VCAA Exam Q3 — 4 marks. Average: 2.3/4</div>
+      </div>
+    </div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">👁 Show Answer</button>
+    <div class="answer-panel">
+      <div class="answer-title">✅ Model Answer (4 marks)</div>
+      <div class="answer-content">
+        <div class="mark-line">This scenario illustrates <strong>classical conditioning</strong>, a behaviourist approach where learning occurs through repeated involuntary association between stimuli.</div>
+        <div class="mark-line"><strong>Before conditioning:</strong> The sound of the predator (NS) produces no relevant response in the birds. A puff of air (UCS) naturally produces a fear/avoidance response (UCR).</div>
+        <div class="mark-line"><strong>During conditioning:</strong> The sound of the predator (NS) is repeatedly presented immediately before the puff of air (UCS), which produces the fear response (UCR). The association is formed through repeated pairings.</div>
+        <div class="mark-line"><strong>After conditioning:</strong> Due to acquisition, the sound of the predator alone (CS) now produces a conditioned fear/avoidance response (CR) — without the puff of air being present.</div>
+        <p style="margin-top:10px;font-size:0.82rem;color:var(--muted)">⚠️ Common errors: Mistaking the puff of air as the NS. Not mentioning 'repeated' in Phase 2. Not specifying 'sound of the predator' (just saying 'predator').</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block medium" data-diff="medium">
+    <div class="q-header">
+      <div class="q-num medium">5</div>
+      <div>
+        <div class="q-meta"><span class="badge badge-gold">Medium</span><span class="badge badge-navy">Operant Conditioning</span><span class="badge badge-teal">Extended Response</span></div>
+        <div class="q-text">Achara was sharing stories with her son Kris about his childhood. Achara told Kris that every time they visited a supermarket, he would cry for her to buy him chocolates. Achara was able to stop Kris from crying by ignoring his crying and continuing with her shopping.<br><br><strong>(a)</strong> According to operant conditioning, what were the antecedent, behaviour and consequence <strong>for Achara</strong> in this story? (3 marks)<br><br><strong>(b)</strong> What type of consequence for Achara is demonstrated in this story? (1 mark)<br><br><strong>(c)</strong> With reference to operant conditioning, describe another way Achara could have stopped Kris from crying. (3 marks)</div>
+        <div class="q-marks">2020 VCAA Exam Q5 — Average: 1.6/3 (Q5a)</div>
+      </div>
+    </div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">👁 Show Answer</button>
+    <div class="answer-panel">
+      <div class="answer-title">✅ Model Answer</div>
+      <div class="answer-content">
+        <p style="margin-bottom:10px;font-weight:600;color:var(--navy)">(a) From ACHARA's perspective:</p>
+        <div class="mark-line"><strong>Antecedent:</strong> Kris (child) cries for chocolate at the supermarket.</div>
+        <div class="mark-line"><strong>Behaviour:</strong> Achara (mother) ignores Kris's crying and continues shopping.</div>
+        <div class="mark-line"><strong>Consequence:</strong> Kris stops crying — the unpleasant stimulus is removed for Achara.</div>
+        <p style="margin-bottom:10px;margin-top:12px;font-weight:600;color:var(--navy)">(b) Type of consequence:</p>
+        <div class="mark-line"><strong>Negative reinforcement</strong> — the removal of the unpleasant stimulus (crying) increases the likelihood that Achara will ignore crying in future.</div>
+        <p style="margin-bottom:10px;margin-top:12px;font-weight:600;color:var(--navy)">(c) Another way:</p>
+        <div class="mark-line">Achara could use <strong>response cost</strong> (negative punishment) — for example, taking Kris's iPad away if he continues to cry for chocolate. The removal of a desirable stimulus (iPad) would decrease the likelihood of Kris crying for chocolate in the future.</div>
+        <p style="margin-top:10px;font-size:0.82rem;color:var(--muted)">⚠️ Most common error: answering from Kris's perspective, not Achara's. Q (c): must use a different type of reinforcement/punishment to Q (b) — don't give another example of negative reinforcement.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HARD QUESTIONS -->
+  <div class="q-block hard" data-diff="hard">
+    <div class="q-header">
+      <div class="q-num hard">6</div>
+      <div>
+        <div class="q-meta"><span class="badge badge-red">Hard</span><span class="badge badge-navy">Classical + Operant</span><span class="badge badge-teal">Extended Response</span></div>
+        <div class="q-text"><strong>Toilet-trained cows fighting against climate change</strong><br><br>In a recent experiment, researchers conditioned cows to urinate in a pen. In the first stage, all cows were confined to separate pens. Test cows were given a sugar treat after they urinated in the pen. Control cows were given a sugar treat at random times unrelated to what they were doing.<br><br>In the second stage, test cows were put outside the pen and given a sugar treat after they went into the pen and urinated. Most test cows learned to urinate in the pen within 15 days. Control cows did not learn.<br><br><strong>(a)</strong> Identify the independent and dependent variables in the <em>first stage</em> of the research. (2 marks)<br><br><strong>(b)</strong> Why were control cows used in this research? (1 mark)<br><br><strong>(c)</strong> Using the language of the appropriate behaviourist approach, explain how the cows learned to urinate in the pen in the <em>second stage</em>. (4 marks)</div>
+        <div class="q-marks">2023 VCAA Exam Q4 — Average: 1.0/2 (4a), 0.7/1 (4b), 2.3/4 (4c)</div>
+      </div>
+    </div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">👁 Show Answer</button>
+    <div class="answer-panel">
+      <div class="answer-title">✅ Model Answer</div>
+      <div class="answer-content">
+        <p style="margin-bottom:10px;font-weight:600;color:var(--navy)">(a) Variables in Stage 1:</p>
+        <div class="mark-line"><strong>Independent variable:</strong> Whether cows were given a sugar treat immediately after urinating in the pen, or at random times (the timing/contingency of reinforcement).</div>
+        <div class="mark-line"><strong>Dependent variable:</strong> Whether the cows learned to urinate in the pen (learning/urination behaviour).</div>
+        <p style="margin-bottom:10px;margin-top:12px;font-weight:600;color:var(--navy)">(b) Why control cows:</p>
+        <div class="mark-line">To establish a baseline and determine whether the sugar treat (reinforcement) — rather than some other variable — was responsible for the cows learning to urinate in the pen. They allow a cause-and-effect relationship to be established.</div>
+        <p style="margin-bottom:10px;margin-top:12px;font-weight:600;color:var(--navy)">(c) Stage 2 — Operant Conditioning:</p>
+        <div class="mark-line"><strong>Antecedent:</strong> The cow is placed outside the pen / the cow needs to urinate.</div>
+        <div class="mark-line"><strong>Behaviour:</strong> The cow moves into the pen and urinates.</div>
+        <div class="mark-line"><strong>Consequence:</strong> The cow receives a sugar treat (positive reinforcement — a desirable stimulus is added).</div>
+        <div class="mark-line">The sugar treat acts as <strong>positive reinforcement</strong> because it increases the likelihood of the cows returning to the pen to urinate in the future, as they receive a desired stimulus each time they do so.</div>
+        <p style="margin-top:10px;font-size:0.82rem;color:var(--muted)">⚠️ Most common error for (a): naming the two stimuli (torch light and bell) as the IVs instead of the order/timing variable. For (c): must explicitly use operant conditioning terminology (antecedent, behaviour, consequence, positive reinforcement).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block hard" data-diff="hard">
+    <div class="q-header">
+      <div class="q-num hard">7</div>
+      <div>
+        <div class="q-meta"><span class="badge badge-red">Hard</span><span class="badge badge-navy">Classical Conditioning</span><span class="badge badge-teal">Experiment Design</span></div>
+        <div class="q-text">Pip designed an experiment to examine whether the timing and order of presenting two stimuli affected how quickly classical conditioning occurred. Pip used a torch light (strong stimulus → blink) and an electronic bell. Seven conditions (A–G) were tested with different orders and time delays (0–2 seconds).<br><br><strong>(a)</strong> List the two independent variables in this experiment. (2 marks)<br><br><strong>(b)</strong> State the neutral stimulus and unconditioned response. (2 marks)<br><br><strong>(c)</strong> What would Pip look for to indicate learning had occurred? (1 mark)<br><br><strong>(d)</strong> Using your knowledge of classical conditioning, predict which condition (A–G) would have the quickest rate of learning. Justify your answer. (3 marks)<br><br>Conditions: A–C = torch then bell (0.5s, 1s, 2s); D = simultaneous (0s); E–G = bell then torch (0.5s, 1s, 2s)</div>
+        <div class="q-marks">2024 VCAA Exam Q6 — Averages: 1.2/2, 1.1/2, 0.3/1, 1.3/3</div>
+      </div>
+    </div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">👁 Show Answer</button>
+    <div class="answer-panel">
+      <div class="answer-title">✅ Model Answer</div>
+      <div class="answer-content">
+        <div class="mark-line"><strong>(a) IV 1:</strong> The order of presentation (torch first vs bell first vs simultaneous).</div>
+        <div class="mark-line"><strong>(a) IV 2:</strong> The time delay between the two stimuli (0, 0.5, 1.0, or 2.0 seconds).</div>
+        <div class="mark-line"><strong>(b) Neutral stimulus:</strong> The sound of the electronic bell. <strong>Unconditioned response:</strong> Blinking (in response to the torch light).</div>
+        <div class="mark-line"><strong>(c)</strong> Pip would look for participants blinking in response to the electronic bell <em>alone</em> (without the torch light) — the bell producing a blink response indicates the CR has formed.</div>
+        <div class="mark-line"><strong>(d)</strong> Condition E — bell followed by torch light with a 0.5 second delay — would have the quickest learning. Classical conditioning works best when the NS is presented immediately before the UCS (NS → UCS). Condition E has the NS (bell) before the UCS (torch) with the shortest time delay (0.5s). The short gap between NS and UCS maximises the association formed, while the correct order (NS before UCS) is required for acquisition to occur.</div>
+        <p style="margin-top:10px;font-size:0.82rem;color:var(--muted)">⚠️ Most common error for (a): listing 'torch' and 'bell' as IVs — these are stimuli, not the variables. The IVs are the ORDER and TIME DELAY. For (d): could get 1 mark for selecting A, F, or G with a congruent justification about order or time delay.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block hard" data-diff="hard">
+    <div class="q-header">
+      <div class="q-num hard">8</div>
+      <div>
+        <div class="q-meta"><span class="badge badge-red">Hard</span><span class="badge badge-navy">Indigenous Learning</span><span class="badge badge-teal">Extended Response</span></div>
+        <div class="q-text">Explain what is meant by a systems way of learning as illustrated by Aboriginal and Torres Strait Islander peoples. In your answer, explain how this might be perceived as different to a Western educational approach. (3 marks)</div>
+        <div class="q-marks">Trial Exam Question — 3 marks</div>
+      </div>
+    </div>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">👁 Show Answer</button>
+    <div class="answer-panel">
+      <div class="answer-title">✅ Model Answer (3 marks)</div>
+      <div class="answer-content">
+        <div class="mark-line"><strong>Mark 1 — Systems approach definition:</strong> A systems way of learning involves multiple different aspects interacting and influencing each other — knowledge and skills are based on interconnected social, physical, and spiritual understandings, where all elements are inter-related rather than separate.</div>
+        <div class="mark-line"><strong>Mark 2 — Example:</strong> For example, knowledge of the blossoming of certain plants coincides with seasons which can indicate when certain food sources will be populating waterways. Song, dance, and art can be used together to communicate and store this knowledge across generations through kinship relationships patterned on Country.</div>
+        <div class="mark-line"><strong>Mark 3 — Difference from Western:</strong> This differs from Western educational approaches, which tend to separate learning into distinct subjects (science, PE, arts) and rely on individual teachers. Western approaches use tricks such as acronyms or acrostics to aid encoding and storage, rather than holistic, multimodal, community-embedded learning.</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ════════════════════════════════════════
+     NICHE SCENARIOS
+════════════════════════════════════════ -->
+<section id="scenarios" class="section">
+  <h1 class="section-title">Niche Scenarios</h1>
+  <p class="section-desc">Tricky and unusual scenarios to test your ability to apply concepts. Click each card to reveal the analysis.</p>
+
+  <div class="scenario-grid">
+
+    <div class="scenario-card">
+      <div class="scenario-icon">💊</div>
+      <div class="scenario-topic">Classical Conditioning</div>
+      <div class="scenario-title">The Immune Response Drug</div>
+      <div class="scenario-text">Researchers paired a drug that increases immune response (epinephrine) with a placebo (a specific taste). After several pairings, the placebo alone increased immune response. What type of conditioning is this?</div>
+      <button class="scenario-reveal-btn" onclick="toggleScenario(this)">Reveal Analysis</button>
+      <div class="scenario-answer">
+        <strong>Classical Conditioning — the learner is passive, the immune response is involuntary.</strong><br><br>
+        • NS: The placebo (specific taste/smell)<br>
+        • UCS: Epinephrine/drug<br>
+        • UCR: Increased immune response (to drug)<br>
+        • CS: Placebo (taste/smell)<br>
+        • CR: Increased immune response (to placebo alone)<br><br>
+        The immune response is <strong>involuntary</strong> — the body cannot consciously decide to increase its immune response — so this is classical, not operant.
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-icon">🎮</div>
+      <div class="scenario-topic">Operant Conditioning</div>
+      <div class="scenario-title">Can't Stop Playing Video Games</div>
+      <div class="scenario-text">Orla finds it difficult to stop playing her video game. She progresses to higher levels and keeps trying to reach the next one. Is this classical or operant?</div>
+      <button class="scenario-reveal-btn" onclick="toggleScenario(this)">Reveal Analysis</button>
+      <div class="scenario-answer">
+        <strong>Operant Conditioning (A — 31% got this right in 2021 VCAA)</strong><br><br>
+        Stopping/continuing to play a video game is a <strong>voluntary behaviour</strong> — Orla is choosing to keep playing. The positive reinforcement of progressing to higher levels (desirable consequence added) increases the likelihood of continuing to play.<br><br>
+        ⚠️ Many students chose classical — but there is no involuntary reflexive response here. The key is: <strong>is the behaviour voluntary?</strong>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-icon">🏠</div>
+      <div class="scenario-topic">Classical Conditioning</div>
+      <div class="scenario-title">Sarah's Hot House</div>
+      <div class="scenario-text">Sarah keeps her home extremely hot. Every time you visit, you perspire. Last time, you noticed you began perspiring and became uncomfortable as soon as you SAW her house — before even going inside. Classical or operant?</div>
+      <button class="scenario-reveal-btn" onclick="toggleScenario(this)">Reveal Analysis</button>
+      <div class="scenario-answer">
+        <strong>Classical Conditioning — perspiration is involuntary.</strong><br><br>
+        • Before: NS (house exterior) → no response | UCS (high temperature) → UCR (perspiration)<br>
+        • During: Sight of house (NS) repeatedly paired with high temperature (UCS) → perspiration (UCR)<br>
+        • After: Sight of house (CS) → perspiration (CR) — before even entering<br><br>
+        Perspiration in response to heat is a <strong>reflexive, involuntary</strong> biological response — classical conditioning.
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-icon">🏠</div>
+      <div class="scenario-topic">Operant Conditioning</div>
+      <div class="scenario-title">The Noisy Neighbour</div>
+      <div class="scenario-text">Hannah's landlord sends her an official letter saying her lease will be terminated if she continues hosting loud parties. Hannah reduces her loud parties in response. Which operant conditioning principle is this?</div>
+      <button class="scenario-reveal-btn" onclick="toggleScenario(this)">Reveal Analysis</button>
+      <div class="scenario-answer">
+        <strong>Negative Reinforcement (Answer B — 2018 VCAA)</strong><br><br>
+        Hannah is reducing parties to AVOID losing her lease. The threat of lease termination is an unpleasant stimulus — her behaviour (reducing parties) allows her to REMOVE this threat.<br><br>
+        • Behaviour: Reducing loud parties<br>
+        • Consequence: Avoidance/removal of lease termination threat (undesirable stimulus removed)<br>
+        • Effect: Behaviour (reducing parties) INCREASES<br><br>
+        ⚠️ This is NOT response cost — nothing has been taken away yet. It is negative reinforcement because she is acting to prevent/remove an undesirable consequence.
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-icon">🐍</div>
+      <div class="scenario-topic">Classical + Operant</div>
+      <div class="scenario-title">Training Dogs to Avoid Snakes</div>
+      <div class="scenario-text">A dog is trained to avoid snakes using two methods: (1) pairing a snake with an electric shock, and (2) giving the dog a treat every time it avoids the snake. Which conditioning type applies to each method?</div>
+      <button class="scenario-reveal-btn" onclick="toggleScenario(this)">Reveal Analysis</button>
+      <div class="scenario-answer">
+        <strong>Method 1: Classical Conditioning</strong><br>
+        NS: Snake | UCS: Electric shock | UCR: Fear/pain response<br>
+        → CS: Snake | CR: Fear response to snake alone<br><br>
+        <strong>Method 2: Operant Conditioning</strong><br>
+        A: Snake present (antecedent) | B: Dog avoids snake | C: Treat (positive reinforcement)<br>
+        → Increases likelihood of avoiding snake in future<br><br>
+        Both forms can work together: classical conditioning creates the involuntary fear response, while operant conditioning shapes the voluntary avoidance behaviour.
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-icon">🧑‍🍳</div>
+      <div class="scenario-topic">Classical Conditioning</div>
+      <div class="scenario-title">Food Aversion After Illness</div>
+      <div class="scenario-text">Mia ate sushi before getting severely ill with food poisoning (unrelated to the sushi). Now she feels nauseous whenever she smells sushi. This happened after only ONE incident. How is this possible in classical conditioning?</div>
+      <button class="scenario-reveal-btn" onclick="toggleScenario(this)">Reveal Analysis</button>
+      <div class="scenario-answer">
+        <strong>Single-Trial Learning / Taste Aversion — a special case of classical conditioning.</strong><br><br>
+        • NS: Smell/taste of sushi<br>
+        • UCS: Severe illness (food poisoning)<br>
+        • UCR: Nausea (biological response to illness)<br>
+        • CS: Smell of sushi | CR: Nausea at smell of sushi<br><br>
+        Classical conditioning usually requires <strong>repeated pairings</strong> — but in some cases (particularly involving illness, pain, or strong emotional events like phobias), a single pairing is enough. This is called <strong>one-trial learning</strong>. The biological significance of avoiding illness makes this association form rapidly.
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-icon">📱</div>
+      <div class="scenario-topic">Operant Conditioning</div>
+      <div class="scenario-title">Wi-Fi Cut Off</div>
+      <div class="scenario-text">Elijah often posts videos when he should be doing homework. When his mother finds out, she turns off his wi-fi, which upsets him. In terms of operant conditioning, this is an example of…</div>
+      <button class="scenario-reveal-btn" onclick="toggleScenario(this)">Reveal Analysis</button>
+      <div class="scenario-answer">
+        <strong>Response Cost / Negative Punishment (Answer A — 2018 VCAA Q19 — 67% correct)</strong><br><br>
+        • Behaviour: Posting videos instead of doing homework<br>
+        • Consequence: Wi-fi access (desirable stimulus) is REMOVED<br>
+        • Effect: Behaviour DECREASES<br><br>
+        This is <strong>negative punishment (response cost)</strong> — a desirable stimulus (wi-fi/internet access) is taken away, which decreases the likelihood of posting videos during homework time.<br><br>
+        ⚠️ NOT positive punishment (nothing unpleasant was added). NOT negative reinforcement (nothing removed to increase behaviour).
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-icon">🌿</div>
+      <div class="scenario-topic">Indigenous Learning</div>
+      <div class="scenario-title">Learning to Hunt Kangaroo</div>
+      <div class="scenario-text">A young member of an Aboriginal community is learning to hunt kangaroo. They learn not just what weapons to use, but the kangaroo's behaviour, its food sources, predators, seasonal patterns, and the land it inhabits. Why does this reflect a 'systems' approach?</div>
+      <button class="scenario-reveal-btn" onclick="toggleScenario(this)">Reveal Analysis</button>
+      <div class="scenario-answer">
+        <strong>Systems Approach to Learning</strong><br><br>
+        This illustrates that Aboriginal and Torres Strait Islander ways of knowing are a <strong>systems approach</strong> — multiple aspects of knowledge inter-relate and influence each other:<br><br>
+        • The learner is situated within a system (Country, community, ecology)<br>
+        • Knowledge is <strong>holistic</strong> — not broken into separate subjects<br>
+        • Learning is <strong>multimodal</strong> — through observation, story, practice, community<br>
+        • Knowledge is <strong>patterned on Country</strong> — all learning relates to the land<br>
+        • Community members teach — not just a single teacher-student relationship<br><br>
+        This contrasts with Western education where 'hunting' might be studied as separate subjects (biology, geography, physics).
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     ANSWER FRAMEWORKS
+════════════════════════════════════════ -->
+<section id="frameworks" class="section">
+  <h1 class="section-title">Answer Frameworks</h1>
+  <p class="section-desc">Plug-and-play structures for common question types. Adapt these with your scenario's specific details.</p>
+
+  <div class="card">
+    <div class="card-title">🔔 Framework 1 — Classical Conditioning 3-Phase Extended Response</div>
+    <div class="framework-box">
+      <div class="framework-title">Use when asked to: "outline the three-phase process" or "use the language of classical conditioning"</div>
+      <div class="framework-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>Name the approach (often 1 mark)</strong>
+          <span>"This scenario illustrates classical conditioning, a behaviourist approach where learning occurs through the repeated involuntary association of two or more stimuli."</span>
+        </div>
+      </div>
+      <div class="framework-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>Before conditioning — NS and UCS+UCR</strong>
+          <span>"Before conditioning, [SPECIFIC NS] produces no relevant response in [subject]. [SPECIFIC UCS] naturally and automatically produces [SPECIFIC UCR]."</span>
+        </div>
+      </div>
+      <div class="framework-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>During conditioning — NS before UCS, REPEATED</strong>
+          <span>"During conditioning, [NS] is repeatedly presented immediately before [UCS], which produces [UCR]. Through repeated pairings, an association forms between [NS] and [UCS]."</span>
+        </div>
+      </div>
+      <div class="framework-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <strong>After conditioning — CS produces CR alone</strong>
+          <span>"After conditioning, due to acquisition, [CS — the previously NS] alone produces the conditioned response of [CR — similar to UCR] — without [UCS] being present."</span>
+        </div>
+      </div>
+    </div>
+    <div class="warning-box">
+      <div class="warning-box-title">⚠️ Checklist before submitting</div>
+      <ul>
+        <li>Did you include ALL FIVE terms: NS, UCS, UCR, CS, CR?</li>
+        <li>Did you specify NS appears BEFORE UCS?</li>
+        <li>Did you say "repeated pairings"?</li>
+        <li>Did you specify the CR is to the CS alone (without UCS)?</li>
+        <li>Did you reference the SPECIFIC SCENARIO details?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚡ Framework 2 — Operant Conditioning ABC Extended Response</div>
+    <div class="framework-box">
+      <div class="framework-title">Use when asked to: "explain using operant conditioning" or "identify the antecedent, behaviour and consequence"</div>
+      <div class="framework-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>Identify the Antecedent</strong>
+          <span>"The antecedent is [specific stimulus/situation that precedes the behaviour]."</span>
+        </div>
+      </div>
+      <div class="framework-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>Identify the Behaviour (voluntary)</strong>
+          <span>"The behaviour is [specific voluntary action performed by the learner]."</span>
+        </div>
+      </div>
+      <div class="framework-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>Identify the Consequence + Name its type</strong>
+          <span>"The consequence is [specific result]. This is an example of [positive/negative reinforcement/punishment] because [desirable/undesirable stimulus] is [added/removed]."</span>
+        </div>
+      </div>
+      <div class="framework-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <strong>State the effect on future behaviour</strong>
+          <span>"As a result, [subject] is [more/less] likely to [repeat the behaviour] in the future."</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">👁 Framework 3 — Observational Learning (Identify a Process)</div>
+    <div class="framework-box">
+      <div class="framework-title">Use when asked to: "identify a process of observational learning and justify"</div>
+      <div class="framework-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>Name the process (1 mark)</strong>
+          <span>"[Attention / Retention / Motivation / Reinforcement] played a role in [subject]'s learning."</span>
+        </div>
+      </div>
+      <div class="framework-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>Justify with scenario (1 mark)</strong>
+          <span>"This is because [specific detail from scenario that shows this process occurring]."</span>
+        </div>
+      </div>
+    </div>
+    <div class="remember-box">
+      <div class="remember-box-title">⭐ Process Selection Tips</div>
+      <ul>
+        <li>Scenario mentions "watched carefully / focused on" → <strong>Attention</strong></li>
+        <li>Scenario mentions "remembered / recalled / created a mental image" → <strong>Retention</strong></li>
+        <li>Scenario mentions "wanted to / desired to / was motivated by" → <strong>Motivation</strong></li>
+        <li>Scenario mentions "was rewarded / got praise / saw model praised" → <strong>Reinforcement</strong></li>
+        <li>Scenario mentions "watched model get punished / avoided behaving that way" → <strong>Reinforcement (vicarious punishment)</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🌏 Framework 4 — Indigenous Ways of Knowing Response</div>
+    <div class="framework-box">
+      <div class="framework-title">Use when asked to: "explain how Aboriginal and Torres Strait Islander ways of knowing illustrate [concept]"</div>
+      <div class="framework-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>Define the key concept using correct terminology</strong>
+          <span>"Aboriginal and Torres Strait Islander ways of knowing view learning as [multimodal / holistic / embedded in relationships / patterned on Country / a systems approach]."</span>
+        </div>
+      </div>
+      <div class="framework-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>Explain what this means specifically</strong>
+          <span>E.g. for kinship: "The kinship structure determines who holds knowledge and who has access to it. Sharing knowledge is a responsibility to other people and creates a cohesive community."</span>
+        </div>
+      </div>
+      <div class="framework-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>Contrast with Western approaches (if asked)</strong>
+          <span>"This differs from Western education, which [separates subjects / relies on individual teacher-student relationships / uses written single-mode techniques]."</span>
+        </div>
+      </div>
+    </div>
+    <div class="warning-box">
+      <div class="warning-box-title">⚠️ Indigenous Ways of Knowing — Do NOT say:</div>
+      <ul>
+        <li>"A collection of artefacts" — explicitly wrong (2023 VCAA).</li>
+        <li>Only use buzzwords without answering the specific question.</li>
+        <li>That all Aboriginal communities have the same practices — they are diverse.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📊 Quick Reference: Consequence Type Identification Table</div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Stimulus Added or Removed?</th><th>Desirable or Undesirable?</th><th>Consequence Type</th><th>Effect on Behaviour</th></tr>
+        <tr><td>ADDED</td><td>Desirable</td><td><strong>Positive Reinforcement</strong></td><td>INCREASES</td></tr>
+        <tr><td>REMOVED</td><td>Undesirable</td><td><strong>Negative Reinforcement</strong></td><td>INCREASES</td></tr>
+        <tr><td>ADDED</td><td>Undesirable</td><td><strong>Positive Punishment</strong></td><td>DECREASES</td></tr>
+        <tr><td>REMOVED</td><td>Desirable</td><td><strong>Negative Punishment (Response Cost)</strong></td><td>DECREASES</td></tr>
+      </table>
+    </div>
+    <div class="remember-box">
+      <div class="remember-box-title">⭐ Memory Trick</div>
+      <ul>
+        <li><strong>Positive</strong> = PLUS = something is ADDED (can be good OR bad)</li>
+        <li><strong>Negative</strong> = MINUS = something is REMOVED (can be good OR bad)</li>
+        <li><strong>Reinforcement</strong> = RISE = behaviour RISES (increases)</li>
+        <li><strong>Punishment</strong> = PLUMMET = behaviour PLUMMETS (decreases)</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+</main>
 
 <script>
-const questions = [
-  // MCQ
-  {
-    type: 'mcq', marks: 1,
-    topic: 'Elements & Atoms',
-    text: 'Which of the following best defines an <strong>element</strong>?',
-    options: [
-      'A substance made of two or more types of atoms bonded together',
-      'A pure substance made of only one type of atom, defined by its number of protons',
-      'A mixture of atoms with the same mass number',
-      'Any pure substance that cannot be broken down physically'
-    ],
-    answer: 1,
-    explanation: 'An element is defined by its atomic number (number of protons). All atoms of an element have the same number of protons, but may have different numbers of neutrons (isotopes) or electrons (ions).'
-  },
-  {
-    type: 'mcq', marks: 1,
-    topic: 'Isotopes & Ions',
-    text: 'An atom of ³⁵₁₇Cl forms a Cl⁻ ion. How many electrons does the ion have?',
-    options: ['16', '17', '18', '35'],
-    answer: 2,
-    explanation: 'Cl has 17 protons and normally 17 electrons. Gaining one electron gives it 18 electrons and a charge of −1.'
-  },
-  {
-    type: 'mcq', marks: 1,
-    topic: 'Periodic Trends',
-    text: 'What happens to atomic radius across Period 3 from left to right?',
-    options: [
-      'It increases because more electrons are added',
-      'It decreases because nuclear charge increases while shielding stays roughly constant',
-      'It stays the same because all atoms are in the same period',
-      'It increases because more protons repel electrons outward'
-    ],
-    answer: 1,
-    explanation: 'Across a period, each element has one more proton (stronger nuclear attraction) but electrons are added to the same shell (constant shielding), so atoms are pulled smaller.'
-  },
-  {
-    type: 'mcq', marks: 1,
-    topic: 'Electronic Configuration',
-    text: 'What is the full electronic configuration of sulfur (Z = 16)?',
-    options: [
-      '1s² 2s² 2p⁶ 3s² 3p²',
-      '1s² 2s² 2p⁶ 3s² 3p⁴',
-      '1s² 2s² 2p⁶ 3s⁶',
-      '1s² 2s² 2p⁴ 3s² 3p⁴'
-    ],
-    answer: 1,
-    explanation: 'Sulfur has 16 electrons. Fill: 1s²(2) + 2s²(4) + 2p⁶(10) + 3s²(12) + 3p⁴(16). So 1s² 2s² 2p⁶ 3s² 3p⁴.'
-  },
-  {
-    type: 'mcq', marks: 1,
-    topic: 'Molecular Shape',
-    text: 'Why is ammonia (NH₃) pyramidal rather than tetrahedral?',
-    options: [
-      'Nitrogen is too small to form four bonds',
-      'The lone pair repels the bonding pairs more strongly, compressing the shape',
-      'There are only three hydrogen atoms, so it must be pyramidal',
-      'Ammonia has no lone pairs on nitrogen'
-    ],
-    answer: 1,
-    explanation: 'NH₃ has 3 bonding pairs and 1 lone pair. Lone pairs repel bonding pairs more strongly than bonding pairs repel each other, pushing the H atoms down into a pyramidal shape.'
-  },
-  {
-    type: 'mcq', marks: 1,
-    topic: 'Polarity',
-    text: 'Which of these molecules is <strong>polar</strong>?',
-    options: ['CO₂', 'CH₄', 'H₂O', 'N₂'],
-    answer: 2,
-    explanation: 'Water (H₂O) is polar. Its bent shape means the O–H bond dipoles do not cancel. CO₂ is linear (dipoles cancel), CH₄ is symmetric tetrahedral, and N₂ has identical atoms so no dipole.'
-  },
-  {
-    type: 'mcq', marks: 1,
-    topic: 'Intermolecular Forces',
-    text: 'What is the dominant intermolecular force in liquid water?',
-    options: ['Dispersion forces', 'Dipole–dipole forces', 'Hydrogen bonding', 'Ionic bonding'],
-    answer: 2,
-    explanation: 'Water has O–H bonds, which enable hydrogen bonding — the strongest type of intermolecular force, requiring O, N, or F bonded to H.'
-  },
-  {
-    type: 'mcq', marks: 1,
-    topic: 'Metallic Bonding',
-    text: 'Which model best describes metallic bonding?',
-    options: [
-      'Cations and anions held in a rigid lattice',
-      'Atoms sharing electrons in fixed pairs',
-      'Positive metal cations surrounded by a sea of delocalised electrons',
-      'Neutral atoms held by dispersion forces'
-    ],
-    answer: 2,
-    explanation: 'Metallic bonding = lattice of positive cations (atoms that have lost their valence electrons) immersed in a mobile "sea" of delocalised electrons, creating strong electrostatic attraction.'
-  },
-
-  // Fill in blank
-  {
-    type: 'fitb', marks: 1,
-    topic: 'Atomic Structure',
-    parts: [
-      { text: 'The mass number (A) equals the number of ' },
-      { blank: true, answer: 'protons', accept: ['protons', 'proton'] },
-      { text: ' plus the number of ' },
-      { blank: true, answer: 'neutrons', accept: ['neutrons', 'neutron'] },
-      { text: '.' }
-    ],
-    explanation: 'A = Z + N. The mass number is the total count of protons and neutrons in the nucleus.'
-  },
-  {
-    type: 'fitb', marks: 1,
-    topic: 'Periodic Trends',
-    parts: [
-      { text: 'Electronegativity ' },
-      { blank: true, answer: 'decreases', accept: ['decreases', 'decrease'] },
-      { text: ' down Group 17 because atomic radius ' },
-      { blank: true, answer: 'increases', accept: ['increases', 'increase'] },
-      { text: ', weakening attraction for bonding electrons.' }
-    ],
-    explanation: 'As you go down any group, atoms get larger and the nucleus is further from the bonding electrons, so the pull on those electrons weakens.'
-  },
-  {
-    type: 'fitb', marks: 1,
-    topic: 'Covalent Bonding',
-    parts: [
-      { text: 'N₂ contains a ' },
-      { blank: true, answer: 'triple', accept: ['triple'] },
-      { text: ' covalent bond because each nitrogen atom needs ' },
-      { blank: true, answer: '3', accept: ['3', 'three'] },
-      { text: ' more electrons to complete its octet.' }
-    ],
-    explanation: 'Nitrogen has 5 valence electrons and needs 8. It shares 3 pairs of electrons with the other nitrogen atom, forming a triple bond (N≡N).'
-  },
-  {
-    type: 'fitb', marks: 1,
-    topic: 'Molecular Shape',
-    parts: [
-      { text: 'Carbon dioxide is ' },
-      { blank: true, answer: 'linear', accept: ['linear'] },
-      { text: ' in shape, making it ' },
-      { blank: true, answer: 'non-polar', accept: ['non-polar', 'nonpolar', 'non polar'] },
-      { text: ' overall because its bond dipoles cancel.' }
-    ],
-    explanation: 'CO₂ has two C=O polar bonds pointing in opposite directions. Because the molecule is linear and symmetric, the dipoles exactly cancel → non-polar molecule.'
-  },
-  {
-    type: 'fitb', marks: 1,
-    topic: 'Metallic Properties',
-    parts: [
-      { text: 'Metals are malleable because layers of ' },
-      { blank: true, answer: 'cations', accept: ['cations', 'ions', 'positive ions', 'metal ions'] },
-      { text: ' can slide past each other without breaking the ' },
-      { blank: true, answer: 'metallic', accept: ['metallic'] },
-      { text: ' bond.' }
-    ],
-    explanation: 'The delocalised electrons simply flow around the shifted ions, maintaining the bond — this is why metals can be hammered into shapes without shattering.'
-  },
-
-  // Short answer
-  {
-    type: 'short', marks: 2,
-    topic: 'Isotopes vs Ions',
-    text: 'Explain the difference between an isotope and an ion. <span class="q-marks">(2 marks)</span>',
-    modelAnswer: 'Isotopes are atoms of the same element with the same number of protons but different numbers of neutrons (different mass numbers). Ions are atoms or groups of atoms that have gained or lost electrons, giving them a positive or negative charge.'
-  },
-  {
-    type: 'short', marks: 2,
-    topic: 'Ionic Radius',
-    text: 'Explain why the ionic radius of S²⁻ is larger than the atomic radius of sulfur, with reference to electron–electron repulsion. <span class="q-marks">(2 marks)</span>',
-    modelAnswer: 'When sulfur gains two electrons to form S²⁻, the electron–electron repulsion increases because there are more electrons in the same orbitals. This repulsion pushes the electrons further apart, expanding the electron cloud and increasing the ionic radius.'
-  },
-  {
-    type: 'short', marks: 2,
-    topic: 'Periodic Trends',
-    text: 'Explain why reactivity increases down Group 1 (alkali metals). <span class="q-marks">(2 marks)</span>',
-    modelAnswer: 'As you move down Group 1, the outer electron is in a higher energy shell, so it is further from the nucleus and more shielded by inner electrons. This makes it easier to remove (lower ionisation energy), so the metal reacts more readily by losing that electron.'
-  },
-  {
-    type: 'short', marks: 2,
-    topic: 'Molecular Substances',
-    text: 'Explain why most molecular substances have low melting points compared to ionic compounds. <span class="q-marks">(2 marks)</span>',
-    modelAnswer: 'Molecular substances have strong covalent bonds within molecules but only weak intermolecular forces (e.g. dispersion forces, hydrogen bonds) between molecules. When melting, only these weak forces need to be overcome, so little energy is required. Ionic compounds have strong electrostatic attractions between ions throughout the lattice, requiring much more energy to break.'
-  },
-  {
-    type: 'short', marks: 2,
-    topic: 'Metallic Bonding',
-    text: 'Using metallic bonding theory, explain why metals are good conductors of electricity. <span class="q-marks">(2 marks)</span>',
-    modelAnswer: 'In metallic bonding, valence electrons are delocalised and free to move throughout the metal lattice. When a voltage is applied, these electrons can drift in one direction, transferring charge. Because they are not tied to specific atoms, they can move easily, making metals excellent electrical conductors.'
-  },
-  {
-    type: 'short', marks: 2,
-    topic: 'Reactivity of Metals',
-    text: 'A student tests magnesium, copper and zinc in dilute hydrochloric acid. Magnesium reacts vigorously, zinc reacts slowly, and copper does not react. Explain these observations in terms of electron loss. <span class="q-marks">(2 marks)</span>',
-    modelAnswer: 'Metals react with acid by losing electrons (forming cations). Magnesium loses electrons most readily (highest reactivity), reacting vigorously. Zinc loses electrons less easily, so it reacts slowly. Copper cannot lose electrons readily enough to displace hydrogen from the acid, so it does not react. The reactivity order is Mg > Zn > Cu.'
-  },
-];
-
-let scores = {};
-let answered = {};
-
-function buildQuiz() {
-  const container = document.getElementById('quiz-questions');
-  container.innerHTML = '';
-  scores = {};
-  answered = {};
-  updateProgress();
-
-  questions.forEach((q, i) => {
-    const card = document.createElement('div');
-    card.className = 'q-card';
-    card.id = 'card-' + i;
-
-    let html = `<div class="q-type-tag">${q.type === 'mcq' ? 'Multiple Choice' : q.type === 'fitb' ? 'Fill in the Blank' : 'Short Answer'} · ${q.topic}</div>`;
-
-    if (q.type === 'mcq') {
-      html += `<div class="q-text"><strong>Q${i+1}.</strong> ${q.text}</div>`;
-      html += '<div class="options">';
-      const letters = ['A','B','C','D'];
-      q.options.forEach((opt, j) => {
-        html += `<button class="option" onclick="checkMCQ(${i},${j})" id="opt-${i}-${j}">
-          <span class="opt-letter">${letters[j]}</span>${opt}
-        </button>`;
-      });
-      html += '</div>';
-    } else if (q.type === 'fitb') {
-      html += `<div class="q-text"><strong>Q${i+1}.</strong> Fill in the blanks:</div>`;
-      html += '<div class="fitb-wrap">';
-      let blankIdx = 0;
-      q.parts.forEach(part => {
-        if (part.blank) {
-          html += `<input class="fitb-input" id="fitb-${i}-${blankIdx}" type="text" placeholder="___" autocomplete="off">`;
-          blankIdx++;
-        } else {
-          html += `<span>${part.text}</span>`;
-        }
-      });
-      html += '</div>';
-      html += `<button class="btn btn-check" onclick="checkFITB(${i})">Check</button>`;
-    } else {
-      html += `<div class="q-text"><strong>Q${i+1}.</strong> ${q.text}</div>`;
-      html += `<textarea class="short-ans" id="short-${i}" placeholder="Write your answer here..."></textarea>`;
-      html += `<button class="btn btn-reveal" onclick="revealModel(${i})">Show model answer</button>`;
-    }
-
-    html += `<div class="feedback" id="feedback-${i}"></div>`;
-    card.innerHTML = html;
-    container.appendChild(card);
-  });
-}
-
-function checkMCQ(qi, selected) {
-  if (answered[qi]) return;
-  answered[qi] = true;
-  const q = questions[qi];
-  const letters = ['A','B','C','D'];
-  q.options.forEach((_, j) => {
-    const btn = document.getElementById(`opt-${qi}-${j}`);
-    btn.disabled = true;
-    if (j === q.answer) btn.classList.add('correct');
-    else if (j === selected) btn.classList.add('incorrect');
-  });
-
-  const fb = document.getElementById(`feedback-${qi}`);
-  const card = document.getElementById(`card-${qi}`);
-  if (selected === q.answer) {
-    scores[qi] = q.marks;
-    fb.className = 'feedback correct';
-    fb.textContent = '✓ Correct! ' + q.explanation;
-    card.classList.add('answered-correct');
-  } else {
-    scores[qi] = 0;
-    fb.className = 'feedback incorrect';
-    fb.textContent = '✗ Incorrect. ' + q.explanation;
-    card.classList.add('answered-incorrect');
+  function showTab(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-  updateProgress();
-}
 
-function checkFITB(qi) {
-  if (answered[qi]) return;
-  answered[qi] = true;
-  const q = questions[qi];
-  let allCorrect = true;
-  let blankIdx = 0;
-  q.parts.forEach(part => {
-    if (part.blank) {
-      const input = document.getElementById(`fitb-${qi}-${blankIdx}`);
-      const val = input.value.trim().toLowerCase();
-      const correct = part.accept.map(a => a.toLowerCase());
-      if (correct.includes(val)) {
-        input.classList.add('correct');
-        input.disabled = true;
+  let currentDiff = 'easy';
+
+  function setDiff(diff) {
+    currentDiff = diff;
+    document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    filterQuestions();
+  }
+
+  function filterQuestions() {
+    const blocks = document.querySelectorAll('.q-block');
+    let visible = 0;
+    blocks.forEach(b => {
+      const bdiff = b.dataset.diff;
+      if (currentDiff === 'all' || bdiff === currentDiff) {
+        b.classList.remove('hidden');
+        visible++;
       } else {
-        input.classList.add('incorrect');
-        input.disabled = true;
-        input.value = input.value + ' (✗ ' + part.answer + ')';
-        allCorrect = false;
+        b.classList.add('hidden');
       }
-      blankIdx++;
-    }
-  });
-  const fb = document.getElementById(`feedback-${qi}`);
-  const card = document.getElementById(`card-${qi}`);
-  if (allCorrect) {
-    scores[qi] = q.marks;
-    fb.className = 'feedback correct';
-    fb.textContent = '✓ All blanks correct! ' + q.explanation;
-    card.classList.add('answered-correct');
-  } else {
-    scores[qi] = 0;
-    fb.className = 'feedback incorrect';
-    fb.textContent = '✗ ' + q.explanation;
-    card.classList.add('answered-incorrect');
+    });
+    // Update progress bar to show count
+    const total = blocks.length;
+    document.getElementById('progress-fill').style.width = (visible / total * 100) + '%';
   }
-  const btn = document.querySelector(`#card-${qi} .btn-check`);
-  if (btn) btn.disabled = true;
-  updateProgress();
-}
 
-function revealModel(qi) {
-  const q = questions[qi];
-  const fb = document.getElementById(`feedback-${qi}`);
-  fb.className = 'feedback reveal';
-  fb.innerHTML = '<strong>Model answer:</strong> ' + q.modelAnswer;
-  answered[qi] = true;
-  scores[qi] = 0;
-  updateProgress();
-}
-
-function updateProgress() {
-  const total = questions.length;
-  const done = Object.keys(answered).length;
-  document.getElementById('prog-label').textContent = `${done} / ${total}`;
-  document.getElementById('prog-fill').style.width = `${(done/total)*100}%`;
-  const pts = Object.values(scores).reduce((a,b) => a+b, 0);
-  document.getElementById('score-display').textContent = pts;
-}
-
-function submitAll() {
-  // auto-answer unchecked FITB
-  questions.forEach((q, i) => {
-    if (!answered[i] && q.type === 'fitb') checkFITB(i);
-    if (!answered[i] && q.type === 'short') {
-      answered[i] = true; scores[i] = 0; updateProgress();
+  function toggleAnswer(btn) {
+    const panel = btn.nextElementSibling;
+    if (panel.classList.contains('open')) {
+      panel.classList.remove('open');
+      btn.textContent = '👁 Show Answer';
+      btn.classList.remove('revealed');
+    } else {
+      panel.classList.add('open');
+      btn.innerHTML = '✅ Hide Answer';
+      btn.classList.add('revealed');
     }
-    if (!answered[i] && q.type === 'mcq') {
-      // mark as unanswered
-      answered[i] = true; scores[i] = 0; updateProgress();
+  }
+
+  function toggleScenario(btn) {
+    const answer = btn.nextElementSibling;
+    if (answer.classList.contains('open')) {
+      answer.classList.remove('open');
+      btn.textContent = 'Reveal Analysis';
+    } else {
+      answer.classList.add('open');
+      btn.textContent = 'Hide Analysis';
     }
-  });
+  }
 
-  const maxPts = questions.reduce((a,q) => a + q.marks, 0);
-  const got = Object.values(scores).reduce((a,b) => a+b, 0);
-  const pct = Math.round((got / maxPts) * 100);
-
-  const results = document.getElementById('results');
-  results.classList.add('show');
-  document.getElementById('final-score').textContent = `${pct}%`;
-  document.getElementById('results-msg').textContent = pct >= 80
-    ? 'Excellent work — you\'re SAC ready! 🎉'
-    : pct >= 60
-    ? 'Good effort! Review the lesson notes for your weak spots.'
-    : 'Keep going — revisit the notes and try again!';
-  results.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-function resetQuiz() {
-  document.getElementById('results').classList.remove('show');
-  buildQuiz();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function showSection(name) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById(name).classList.add('active');
-  event.target.classList.add('active');
-}
-
-function toggleModule(header) {
-  const module = header.parentElement;
-  module.classList.toggle('open');
-}
-
-buildQuiz();
+  // Init
+  filterQuestions();
 </script>
+
 </body>
 </html>
